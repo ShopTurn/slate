@@ -216,10 +216,10 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#general-info" class="toc-h1 toc-link" data-title="General Info">General Info</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#general-information" class="toc-h2 toc-link" data-title="General Information">General Information</a>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
                   </li>
                   <li>
                     <a href="#api-standards" class="toc-h2 toc-link" data-title="API Standards">API Standards</a>
@@ -297,6 +297,57 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#stores" class="toc-h1 toc-link" data-title="Stores">Stores</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-store" class="toc-h2 toc-link" data-title="Create a Store">Create a Store</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-store" class="toc-h2 toc-link" data-title="Get a Store">Get a Store</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-store" class="toc-h2 toc-link" data-title="Update a Store">Update a Store</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-store" class="toc-h2 toc-link" data-title="Delete a Store">Delete a Store</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-stores" class="toc-h2 toc-link" data-title="Search for Stores">Search for Stores</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#customers" class="toc-h1 toc-link" data-title="Customers">Customers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-customer" class="toc-h2 toc-link" data-title="Create a Customer">Create a Customer</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-customer" class="toc-h2 toc-link" data-title="Get a Customer">Get a Customer</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-customer" class="toc-h2 toc-link" data-title="Update a Customer">Update a Customer</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-customer" class="toc-h2 toc-link" data-title="Delete a Customer">Delete a Customer</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-customers" class="toc-h2 toc-link" data-title="Search for Customers">Search for Customers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#task-estimates" class="toc-h1 toc-link" data-title="Task Estimates">Task Estimates</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-an-estimate" class="toc-h2 toc-link" data-title="Create an Estimate">Create an Estimate</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-task-estimate" class="toc-h2 toc-link" data-title="Get a Task Estimate">Get a Task Estimate</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a target="_blank" href='https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=jake%40shopturn.com'>Request API Key</a></li>
@@ -305,7 +356,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1><h2 id='general-information'>General Information</h2>
+        <h1 id='general-info'>General Info</h1><h2 id='introduction'>Introduction</h2>
 <p>The ShopTurn API is a RESTful web service for developers to programmatically interact with ShopTurn’s real-time delivery and return logistics platform.</p>
 
 <p>All data exchanged between clients and the API is JSON over HTTPS. Note that we will only accept <code>application/json</code> as content type and that the request body, if relevant, must be JSON-encoded.</p>
@@ -587,10 +638,12 @@ You must include <code>Authorization: API Key</code> as a header in every reques
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zach Doe"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+11234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+11234567890"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Get an admin with a specific <code>id</code>.</p>
+<h3 id='http-request-4'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/admin/&lt;admin_id&gt;</code></p>
 <h2 id='update-an-admin'>Update an Admin</h2>
 <blockquote>
 <p><code>Example:</code></p>
@@ -616,8 +669,8 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Update an admin&#39;s information.</p>
-<h3 id='http-request-4'>HTTP Request:</h3>
-<p><code>PUT https://api.shopturn.com/v1/admin/admin_id</code></p>
+<h3 id='http-request-5'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/admin/&lt;admin_id&gt;</code></p>
 <h3 id='body-parameters-3'>Body Parameters:</h3>
 <table><thead>
 <tr>
@@ -654,7 +707,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </blockquote>
 
 <p>Delete an Admin</p>
-<h3 id='http-request-5'>HTTP Request:</h3>
+<h3 id='http-request-6'>HTTP Request:</h3>
 <p><code>DELETE https://api.shopturn.com/v1/admin</code></p>
 <h2 id='search-for-admins'>Search for Admins</h2>
 <blockquote>
@@ -684,7 +737,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Search for admins matching <em>all</em> of any combination of the following search parameters: </p>
-<h3 id='http-request-6'>HTTP Request:</h3>
+<h3 id='http-request-7'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/admin/search</code></p>
 <h3 id='body-parameters-4'>Body Parameters:</h3>
 <table><thead>
@@ -781,7 +834,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Create a new worker. An SMS will be sent to the worker&#39;s phone with a temporary password and iOS/Android download details.</p>
 
 <p>After logging in for the first time, the worker will be required to create a permanent password.</p>
-<h3 id='http-request-7'>HTTP Request:</h3>
+<h3 id='http-request-8'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/worker</code></p>
 <h3 id='body-parameters-5'>Body Parameters:</h3>
 <table><thead>
@@ -882,10 +935,12 @@ You must include <code>Authorization: API Key</code> as a header in every reques
     </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-102.123412</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">47.512341</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">47.512341</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Get a worker with a specific <code>id</code>.</p>
+<h3 id='http-request-9'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/worker/&lt;worker_id&gt;</code></p>
 <h2 id='update-a-worker'>Update a Worker</h2>
 <blockquote>
 <p>Example:</p>
@@ -917,12 +972,12 @@ You must include <code>Authorization: API Key</code> as a header in every reques
     </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
     </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Update a worker&#39;s information. Vehicle and capacity attributes can be nulled. (null vehicle means on-foot worker)</p>
-<h3 id='http-request-8'>HTTP Request:</h3>
-<p><code>PUT https://api.shopturn.com/v1/worker/worker_id</code></p>
+<h3 id='http-request-10'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/worker/&lt;worker_id&gt;</code></p>
 <h3 id='body-parameters-6'>Body Parameters:</h3>
 <table><thead>
 <tr>
@@ -1004,8 +1059,8 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </blockquote>
 
 <p>Delete a Worker</p>
-<h3 id='http-request-9'>HTTP Request:</h3>
-<p><code>DELETE https://api.shopturn.com/v1/worker/worker_id</code></p>
+<h3 id='http-request-11'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/worker/&lt;worker_id&gt;</code></p>
 <h2 id='search-for-workers'>Search for Workers</h2>
 <blockquote>
 <p><code>Example:</code></p>
@@ -1044,7 +1099,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>Search for workers matching <em>all</em> of any combination of the following search parameters: </p>
-<h3 id='http-request-10'>HTTP Request:</h3>
+<h3 id='http-request-12'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/worker/search</code></p>
 <h3 id='body-parameters-7'>Body Parameters:</h3>
 <p>Search for workers matching <em>all</em> of any combination of the following search parameters:</p>
@@ -1114,6 +1169,997 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 
 <p>Latitude and longitude must both be included or both be excluded.</p>
+<h1 id='stores'>Stores</h1>
+<p>A store is a location where deliveries start and returns are completed by workers.</p>
+<h2 id='create-a-store'>Create a Store</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{
+              "name": "NY Lower East Side"
+              "entry_notes": "Loop arround to the loading dock."
+              "address": {
+                  "number": "176",
+                  "street": "E 3rd St",
+                  "city": "New York",
+                  "state": "NY",
+                  "country": "United States",
+                  "postal_code": "10009"
+              }
+          }'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+    </span><span class="mf">47.018286</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513811</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513811</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new store to start accepting returns and scheduling deliveries.</p>
+<h3 id='http-request-13'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/store</code></p>
+<h3 id='body-parameters-8'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Name of the store</td>
+</tr>
+<tr>
+<td style="text-align: left">entry_notes</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Notes for getting into the store</td>
+</tr>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left"><em>object</em></td>
+<td style="text-align: left">Details below</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Phone of the store for workers to call in case of a problem</td>
+</tr>
+<tr>
+<td style="text-align: left">latitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The latitude value of the store.</td>
+</tr>
+<tr>
+<td style="text-align: left">longitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The longitude value of the store.</td>
+</tr>
+</tbody></table>
+
+<p>If the latitude and longitude are ommited, the API will automatically set the coordinates by reverse geocoding the address. </p>
+
+<p>An <code>address</code> object has the following properties:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A name for the address (i.e. Empire State Building)</td>
+</tr>
+<tr>
+<td style="text-align: left">number</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street number</td>
+</tr>
+<tr>
+<td style="text-align: left">street</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street name</td>
+</tr>
+<tr>
+<td style="text-align: left">apartment</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Apartment number / address line 2</td>
+</tr>
+<tr>
+<td style="text-align: left">city</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The city name</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The state name or 2 letter code</td>
+</tr>
+<tr>
+<td style="text-align: left">country</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The country name</td>
+</tr>
+<tr>
+<td style="text-align: left">postal_code</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The postal code</td>
+</tr>
+<tr>
+<td style="text-align: left">unparsed</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Unparsed human-readable address on one line. If provided, all other properties except for <code>name</code> and <code>apartment</code> are ignored.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-store'>Get a Store</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+    </span><span class="mf">47.018286</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513811</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513931</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a store with a specific <code>id</code>.</p>
+<h3 id='http-request-14'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
+<h2 id='update-a-store'>Update a Store</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"address":{"unparsed":"4 S circle dr, great neck ny"}, "name": "NY Long Island"}'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Long Island"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mf">-104.940042</span><span class="p">,</span><span class="w">
+    </span><span class="mf">49.021886</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Circle Drive"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great Neck"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11021"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513811</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509514531</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a store&#39;s information.</p>
+<h3 id='http-request-15'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
+<h3 id='body-parameters-9'>Body parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> New name of the store</td>
+</tr>
+<tr>
+<td style="text-align: left">entry_notes</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> New notes for getting into the store</td>
+</tr>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left"><em>object</em></td>
+<td style="text-align: left"><strong>optional</strong> Details below</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Phone of the store for workers to call in case of a problem</td>
+</tr>
+<tr>
+<td style="text-align: left">latitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The latitude value of the store</td>
+</tr>
+<tr>
+<td style="text-align: left">longitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The longitude value of the store</td>
+</tr>
+</tbody></table>
+
+<p>If the latitude and longitude are ommited, the API will automatically set the coordinates by reverse geocoding the address. </p>
+
+<p>An <code>address</code> object has the following properties:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A name for the address (i.e. Empire State Building)</td>
+</tr>
+<tr>
+<td style="text-align: left">number</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street number</td>
+</tr>
+<tr>
+<td style="text-align: left">street</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street name</td>
+</tr>
+<tr>
+<td style="text-align: left">apartment</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Apartment number / address line 2</td>
+</tr>
+<tr>
+<td style="text-align: left">city</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The city name</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The state name or 2 letter code</td>
+</tr>
+<tr>
+<td style="text-align: left">country</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The country name</td>
+</tr>
+<tr>
+<td style="text-align: left">postal_code</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The postal code</td>
+</tr>
+<tr>
+<td style="text-align: left">unparsed</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Unparsed human-readable address on one line. If provided, all other properties except for <code>name</code> and <code>apartment</code> are ignored.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-store'>Delete a Store</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+
+<p>Delete a store.</p>
+<h3 id='http-request-16'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
+<h2 id='search-for-stores'>Search for Stores</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store/search"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"name":"NY Long Island"}'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Long Island"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mf">-104.940042</span><span class="p">,</span><span class="w">
+        </span><span class="mf">49.021886</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"South Circle Drive"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Great Neck"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11021"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509513811</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509514531</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Search for stores matching <em>all</em> of any combination of the following search parameters: </p>
+<h3 id='http-request-17'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/store/search</code></p>
+<h3 id='body-parameters-10'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">latitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The latitude value of the search coordinates.</td>
+</tr>
+<tr>
+<td style="text-align: left">longitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The longitude value of the search coordinates.</td>
+</tr>
+<tr>
+<td style="text-align: left">radius</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> Length in meters of desired radius. Defaults to 1000. Max value is 10000.</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with phone numbers containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with names containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">street_number</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with addresses with street numbers equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">street_name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with addresses with street names equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">city</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong>  Matches entities with addresses with city names equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with addresses with state names equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">country</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with addresses with country names equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">postal_code</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with addresses with postal codes equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">order_by</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> name (default), email, phone, on_duty, delay_time, tasks, time_created, time_last_modified, or time_last_seen</td>
+</tr>
+<tr>
+<td style="text-align: left">descending</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> true to list workers in descending order. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to limit to results to</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to offset results by</td>
+</tr>
+</tbody></table>
+<h1 id='customers'>Customers</h1>
+<p>A customer is a target for a task. (i.e. the person ordering a delivery or scheduling a return).</p>
+<h2 id='create-a-customer'>Create a Customer</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{
+            "name": "John Snow",
+            "external_id": "4SGd53hSF6s27"
+            "phone": "+15163535572",
+            "email": "jsnow@got.com",
+            "notes": "Very stubborn. Sticks to his morals.",
+            "skip_phone_number_verification": true
+          }'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4SGd53hSF6s27"</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Snow"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15163535572"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsnow@got.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very stubborn. Sticks to his morals."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_phone_number_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_email_verification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new customer to start requesting returns and deliveries.</p>
+<h3 id='http-request-18'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/customer</code></p>
+<h3 id='body-parameters-11'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">external_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The customer&#39;s external ID</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The customer&#39;s full name</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A unique phone number with the recipients country code (in the format +11234567890)</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A unique email belonging to the customer</td>
+</tr>
+<tr>
+<td style="text-align: left">notes</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Global notes for the customer, only visible to the organization. Should not be task specific. (e.g. Has a hot temper. Be nice!)</td>
+</tr>
+<tr>
+<td style="text-align: left">skip_notifications</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether the customer should not receive mobile notifications relating to a task. If set to <code>false</code>, notifications will be sent in the following order pending availability: Push Notifications, SMS, Email. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">skip_phone_number_verification</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether ShopTurn should not verify the customer&#39;s phone number. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">skip_email_verification</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether ShopTurn should not verify the customer&#39;s email address. Defaults to <code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-a-customer'>Get a Customer</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4SGd53hSF6s27"</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Snow"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15163535572"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsnow@got.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very stubborn. Sticks to his morals."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_phone_number_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_email_verification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a Customer with a specific <code>id</code>.</p>
+<h3 id='http-request-19'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/customer/&lt;customer_id&gt;</code></p>
+<h2 id='update-a-customer'>Update a Customer</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"name": "John Targarian", "email": "jtargarian@got.com"}'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4SGd53hSF6s27"</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Targarian"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15163535572"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jtargarian@got.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very stubborn. Sticks to his morals."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_phone_number_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"skip_email_verification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a Customer&#39;s information. Changing a customer&#39;s <code>email</code> or <code>phone</code> will cause the values of <code>email_verified</code> or <code>phone_verified</code> to reset. It will also attempt to verify them again if set. Setting a new <code>email</code> and setting <code>skip_email_verification</code> to true in the same request will prevent the API from verifying the new email. Same goes for phone. </p>
+<h3 id='http-request-20'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G</code></p>
+<h3 id='body-parameters-12'>Body parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> The customer&#39;s new full name</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A unique phone number with the recipients country code (in the format +11234567890)</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A unique email belonging to the customer</td>
+</tr>
+<tr>
+<td style="text-align: left">notes</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Global notes for the customer, only visible to the organization. Should not be task specific. (e.g. Has a hot temper. Be nice!)</td>
+</tr>
+<tr>
+<td style="text-align: left">skip_notifications</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether the customer should not receive mobile notifications relating to a task. If set to <code>false</code>, notifications will be sent in the following order pending availability: Push Notifications, SMS, Email. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">skip_phone_number_verification</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether ShopTurn should not verify the customer&#39;s phone number. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">skip_email_verification</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Whether ShopTurn should not verify the customer&#39;s email address. Defaults to <code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-customer'>Delete a Customer</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+
+<p>Delete a customer.</p>
+<h3 id='http-request-21'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G</code></p>
+<h2 id='search-for-customers'>Search for Customers</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer/search"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{
+            "name":"%snow%"
+          }'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Snow"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15163535572"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jsnow@got.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Very stubborn. Sticks to his morals."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_phone_number_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_email_verification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2rTLxcOd6Y5G0jdRwOVvKVS"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ramsey Snow"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+15165635572"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsnow@got.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scary, unpredictable and sporatic. Don't get on his bad side!"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_notifications"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_phone_number_verification"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_email_verification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone_verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Search for customers matching <em>all</em> of any combination of the following search parameters:</p>
+<h3 id='http-request-22'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/customers/search</code></p>
+<h3 id='body-parameters-13'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with names containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with phone numbers containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with emails containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">order_by</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> name (default), email, phone, on_duty, time_created, or time_last_modified</td>
+</tr>
+<tr>
+<td style="text-align: left">descending</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> true to list workers in descending order. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to limit to results to</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to offset results by</td>
+</tr>
+</tbody></table>
+<h1 id='task-estimates'>Task Estimates</h1>
+<p>Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available Time Windows, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned Time Window objects to turn the estimate into a task.</p>
+
+<p>A <code>Time Window</code> is an object specifying a window that a task can be competed in. It has the following properties:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A unique identifier for the time window (required to create a Task)</td>
+</tr>
+<tr>
+<td style="text-align: left">start_time</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left">Unix timestamp for when the time window starts</td>
+</tr>
+<tr>
+<td style="text-align: left">end_time</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left">Unix timestamp for when the time window ends</td>
+</tr>
+<tr>
+<td style="text-align: left">expires_at</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left">Unix timestamp for when the window must be reserved by.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note</strong>: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid Time Windows.</p>
+<h2 id='create-an-estimate'>Create an Estimate</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/estimate"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{
+            "address":{
+                "unparsed": "176 East 3rd st nyc 10009",
+                "apartment": "4c"
+            },
+            "customer_id":"2rTLxcOd6Y5G0jdRwOVvKVS",
+            "store_id":"d6Y5G0jd2rTLxcORwOVvKVS", // leave out to auto-assign
+            "barcodes": ["3647847698354","245736732","3647847698354"]
+          }'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FsSgHz2n4pOZ36b6ppEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2rTLxcOd6Y5G0jdRwOVvKVS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6Y5G0jd2rTLxcORwOVvKVS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">,</span><span class="w"> </span><span class="s2">"638372427244"</span><span class="p">]</span><span class="w">
+    </span><span class="s2">"time_windows"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Creating a <code>Task Estimate</code> is the first step to creating a <code>Task</code>. </p>
+<h3 id='http-request-23'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/estimate</code></p>
+<h3 id='body-parameters-14'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">address</td>
+<td style="text-align: left"><em>object</em></td>
+<td style="text-align: left">Details below</td>
+</tr>
+<tr>
+<td style="text-align: left">customer_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> The id of the customer the worker is going to</td>
+</tr>
+<tr>
+<td style="text-align: left">customer_external_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> The external unique id of the customer the worker is going to</td>
+</tr>
+<tr>
+<td style="text-align: left">store_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong>  The id of the store the task is going to. leave out to auto-assign</td>
+</tr>
+<tr>
+<td style="text-align: left">is_delivery</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> Set to <code>true</code> if the task is a delivery. Default is <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">barcodes</td>
+<td style="text-align: left"><em>array</em></td>
+<td style="text-align: left">An array of barcodes (strings) that must be scanned by the worker at pickup, and at transfer.</td>
+</tr>
+</tbody></table>
+
+<p>Either <code>customer_id</code> or <code>customer_external_id</code> must be included.</p>
+
+<p>An <code>address</code> object has the following properties:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A name for the address (i.e. Empire State Building)</td>
+</tr>
+<tr>
+<td style="text-align: left">number</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street number</td>
+</tr>
+<tr>
+<td style="text-align: left">street</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The street name</td>
+</tr>
+<tr>
+<td style="text-align: left">apartment</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Apartment number / address line 2</td>
+</tr>
+<tr>
+<td style="text-align: left">city</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The city name</td>
+</tr>
+<tr>
+<td style="text-align: left">state</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The state name or 2 letter code</td>
+</tr>
+<tr>
+<td style="text-align: left">country</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The country name</td>
+</tr>
+<tr>
+<td style="text-align: left">postal_code</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The postal code</td>
+</tr>
+<tr>
+<td style="text-align: left">unparsed</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Unparsed human-readable address on one line. If provided, all other properties except for <code>name</code> and <code>apartment</code> are ignored.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-task-estimate'>Get a Task Estimate</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FsSgHz2n4pOZ36b6ppEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"apartment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2rTLxcOd6Y5G0jdRwOVvKVS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6Y5G0jd2rTLxcORwOVvKVS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">,</span><span class="w"> </span><span class="s2">"638372427244"</span><span class="p">]</span><span class="w">
+    </span><span class="s2">"time_windows"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508525337</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+        </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a Task Estimate with a specific <code>id</code>. This re-generates the Time Window objects with later <code>expires_at</code> attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. </p>
+<h3 id='http-request-24'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/estimate/&lt;estimate_id&gt;</code></p>
 
       </div>
       <div class="dark-box">
