@@ -512,7 +512,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </aside>
 <h2 id='test-api-key'>Test API Key</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/auth/test"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -529,7 +529,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Organizations are the top-most entity within ShopTurn. <a href="/#reference/Administrators">Administrators</a>, <a href="/#reference/workers">Workers</a>, <a href="/#reference/stores">Stores</a> and <a href="/#reference/tasks">Tasks</a> all belong to an organization. </p>
 <h2 id='get-organization'>Get Organization</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -553,7 +553,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/organization</code></p>
 <h2 id='update-organization'>Update Organization</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -613,7 +613,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Administrators are users who can access the ShopTurn dashboard. An organization has one administrator of type <code>super</code> and zero or more of type <code>standard</code> (also known as dispatchers). Dispatchers can manage workers, tasks, and more via the dashboard.</p>
 <h2 id='create-an-admin'>Create an Admin</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -668,7 +668,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-an-admin'>Get an Admin</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/admin/QSa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -694,7 +694,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/admin/&lt;admin_id&gt;</code></p>
 <h2 id='update-an-admin'>Update an Admin</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -749,7 +749,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='delete-an-admin'>Delete an Admin</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -763,7 +763,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>DELETE https://api.shopturn.com/v1/admin</code></p>
 <h2 id='search-for-admins'>Search for Admins</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -839,7 +839,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Workers are the members of an organization who perform returns and deliveries. Workers have a vehicle with which tasks are completed.</p>
 <h2 id='create-a-worker'>Create a Worker</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -959,7 +959,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-a-worker'>Get a Worker</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -995,7 +995,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/worker/&lt;worker_id&gt;</code></p>
 <h2 id='update-a-worker'>Update a Worker</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1101,7 +1101,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='delete-a-worker'>Delete a Worker</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1115,7 +1115,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>DELETE https://api.shopturn.com/v1/worker/&lt;worker_id&gt;</code></p>
 <h2 id='search-for-workers'>Search for Workers</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1225,7 +1225,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>A store is a location where deliveries start and returns are completed by workers.</p>
 <h2 id='create-a-store'>Create a Store</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1366,7 +1366,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-a-store'>Get a Store</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1398,7 +1398,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
 <h2 id='update-a-store'>Update a Store</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1528,7 +1528,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='delete-a-store'>Delete a Store</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1542,7 +1542,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>DELETE https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
 <h2 id='search-for-stores'>Search for Stores</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1665,7 +1665,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>A customer is a target for a task. (i.e. the person ordering a delivery or scheduling a return).</p>
 <h2 id='create-a-customer'>Create a Customer</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1751,7 +1751,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-a-customer'>Get a Customer</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1780,7 +1780,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/customer/&lt;customer_id&gt;</code></p>
 <h2 id='update-a-customer'>Update a Customer</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1854,7 +1854,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='delete-a-customer'>Delete a Customer</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1868,7 +1868,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>DELETE https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G</code></p>
 <h2 id='search-for-customers'>Search for Customers</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -1996,7 +1996,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><strong>Note</strong>: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid <code>Time Window</code>s.</p>
 <h2 id='create-an-estimate'>Create an Estimate</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/estimate"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2158,7 +2158,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-a-task-estimate'>Get a Task Estimate</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2218,7 +2218,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>The first step to creating a <code>Task</code> is to create a <code>Task Estimate</code>. Once created, save the <code>id</code> of the estimate, and present the available <code>Time Window</code>s to the customer (returned as part of the <code>Task Estimate</code> object). When they select a <code>Time Window</code>, send the <code>id</code> of the <code>Task Estimate</code> along with the <code>id</code> of the <code>Time Window</code> to the <code>Tasks</code> endpoint as described in more detail below. </p>
 <h2 id='create-a-task'>Create a Task</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/task"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2334,7 +2334,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tbody></table>
 <h2 id='get-a-task'>Get a Task</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2409,7 +2409,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/task/&lt;task_id&gt;</code></p>
 <h2 id='update-a-task'>Update a Task</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2525,7 +2525,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><strong>Note</strong>: To change the time_window of a task you need to send the id of an unexpired <code>Time Window</code>. To do so, create another <code>Task Estimate</code> with the same customer and address, present the times to the consumer, and pass back the time_window_id of the newly selected <code>Time Window</code>.  </p>
 <h2 id='delete-a-task'>Delete a Task</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2539,7 +2539,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>DELETE https://api.shopturn.com/v1/task/&lt;task_id&gt;</code></p>
 <h2 id='search-for-tasks'>Search for Tasks</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/tasks/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2797,7 +2797,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Any request that fails (non-200 status code) will be retried every 15 minutes for up to 24 hrs. You will receive an email after the 10th attempt, and after 24 hrs. If the webhook fails 288 times in a row (3 days) the webhook will be disabled and you will receive an email. </p>
 <h2 id='create-a-webhook'>Create a Webhook</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/webhook"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2856,7 +2856,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><strong>Note:</strong> You must include either the trigger_name or the trigger_id</p>
 <h2 id='get-all-webhooks'>Get all Webhooks</h2>
 <blockquote>
-<p><code>Example:</code></p>
+<p><code>Example Request:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/webhooks"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
@@ -2883,7 +2883,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/webhooks</code></p>
 <h2 id='delete-a-webhook'>Delete a Webhook</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example Request</code>:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
