@@ -115,7 +115,7 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
-    background: $nav-subitem-bg;
+    background: #232629;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -516,6 +516,7 @@ html, body {
 
 .content {
   pre, blockquote {
+    padding-top: 27px;
     background-color: $code-bg;
     color: #fff;
 
