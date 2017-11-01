@@ -348,6 +348,46 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-task" class="toc-h2 toc-link" data-title="Create a Task">Create a Task</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-task" class="toc-h2 toc-link" data-title="Get a Task">Get a Task</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-task" class="toc-h2 toc-link" data-title="Update a Task">Update a Task</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-task" class="toc-h2 toc-link" data-title="Delete a Task">Delete a Task</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-tasks" class="toc-h2 toc-link" data-title="Search for Tasks">Search for Tasks</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#kinds-of-webhooks" class="toc-h2 toc-link" data-title="Kinds of Webhooks">Kinds of Webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#failure-amp-retry" class="toc-h2 toc-link" data-title="Failure &amp; Retry">Failure &amp; Retry</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-webhook" class="toc-h2 toc-link" data-title="Create a Webhook">Create a Webhook</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-webhooks" class="toc-h2 toc-link" data-title="Get all Webhooks">Get all Webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-webhook" class="toc-h2 toc-link" data-title="Delete a Webhook">Delete a Webhook</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a target="_blank" href='https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=jake%40shopturn.com'>Request API Key</a></li>
@@ -517,7 +557,11 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
-      -d  <span class="s1">'{"name": "New Name", "email": "admin2@retailer.com", "timezone": "America/New_York"}'</span>
+      -d  <span class="s1">'{
+              "name": "New Name", 
+              "email": "admin2@retailer.com", 
+              "timezone": "America/New_York"
+           }'</span>
 </code></pre>
 <blockquote>
 <p><code>Response: 200 (application/json)</code>:</p>
@@ -573,7 +617,11 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
-      -d  <span class="s1">'{ "name": "Jane Doe", "email": "jane@retailer.com", "phone": "(123) 456-7890"}'</span>
+      -d  <span class="s1">'{ 
+              "name": "Jane Doe", 
+              "email": "jane@retailer.com", 
+              "phone": "(123) 456-7890"
+           }'</span>
 </code></pre>
 <blockquote>
 <p><code>Response: 200 (application/json)</code>:</p>
@@ -650,7 +698,11 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
-      -d <span class="s1">'{ "name": "Janette Doe", "email": "janette@retailer.com", "phone": "+10987654321" }'</span>
+      -d <span class="s1">'{ 
+            "name": "Janette Doe", 
+            "email": "janette@retailer.com", 
+            "phone": "+10987654321" 
+          }'</span>
 </code></pre>
 <blockquote>
 <p><code>Response: 200 (application/json)</code>:</p>
@@ -1908,7 +1960,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tr>
 </tbody></table>
 <h1 id='task-estimates'>Task Estimates</h1>
-<p>Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available Time Windows, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned Time Window objects to turn the estimate into a task.</p>
+<p>Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available <code>Time Window</code>s, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned <code>Time Window</code> objects to turn the estimate into a task.</p>
 
 <p>A <code>Time Window</code> is an object specifying a window that a task can be competed in. It has the following properties:</p>
 
@@ -1922,17 +1974,17 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <tr>
 <td style="text-align: left">id</td>
 <td style="text-align: left"><em>string</em></td>
-<td style="text-align: left">A unique identifier for the time window (required to create a Task)</td>
+<td style="text-align: left">A unique identifier for the <code>Time Window</code> (required to create a Task)</td>
 </tr>
 <tr>
 <td style="text-align: left">start_time</td>
 <td style="text-align: left"><em>number</em></td>
-<td style="text-align: left">Unix timestamp for when the time window starts</td>
+<td style="text-align: left">Unix timestamp for when the <code>Time Window</code> starts</td>
 </tr>
 <tr>
 <td style="text-align: left">end_time</td>
 <td style="text-align: left"><em>number</em></td>
-<td style="text-align: left">Unix timestamp for when the time window ends</td>
+<td style="text-align: left">Unix timestamp for when the <code>Time Window</code> ends</td>
 </tr>
 <tr>
 <td style="text-align: left">expires_at</td>
@@ -1941,7 +1993,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </tr>
 </tbody></table>
 
-<p><strong>Note</strong>: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid Time Windows.</p>
+<p><strong>Note</strong>: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid <code>Time Window</code>s.</p>
 <h2 id='create-an-estimate'>Create an Estimate</h2>
 <blockquote>
 <p>Example:</p>
@@ -1952,7 +2004,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
             "address":{
                 "unparsed": "176 East 3rd st nyc 10009",
                 "apartment": "4c"
-            },
+            }, 
             "customer_id":"2rTLxcOd6Y5G0jdRwOVvKVS",
             "store_id":"d6Y5G0jd2rTLxcORwOVvKVS", // leave out to auto-assign
             "barcodes": ["3647847698354","245736732","3647847698354"]
@@ -2157,9 +2209,692 @@ You must include <code>Authorization: API Key</code> as a header in every reques
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Get a Task Estimate with a specific <code>id</code>. This re-generates the Time Window objects with later <code>expires_at</code> attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. </p>
+<p>Get a Task Estimate with a specific <code>id</code>. This re-generates the <code>Time Window</code> objects with later <code>expires_at</code> attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. </p>
 <h3 id='http-request-24'>HTTP Request:</h3>
 <p><code>GET https://api.shopturn.com/v1/estimate/&lt;estimate_id&gt;</code></p>
+<h1 id='tasks'>Tasks</h1>
+<p>Tasks represent units of work, defined by one destination and one recipient, and are automatically assigned to workers for completion. Note that both return pick-ups and deliveries are considered tasks. </p>
+
+<p>The first step to creating a <code>Task</code> is to create a <code>Task Estimate</code>. Once created, save the <code>id</code> of the estimate, and present the available <code>Time Window</code>s to the customer (returned as part of the <code>Task Estimate</code> object). When they select a <code>Time Window</code>, send the <code>id</code> of the <code>Task Estimate</code> along with the <code>id</code> of the <code>Time Window</code> to the <code>Tasks</code> endpoint as described in more detail below. </p>
+<h2 id='create-a-task'>Create a Task</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/task"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{
+                "estimate_id":"FsSgHz2n4pOZ36b6ppEUwGA",
+                "windowId":"Hz2npEUwG4pOZ36b6pFsSgA",
+                "charge_customer":true,
+                "return_store_credit":false,
+                "notes": "I left my bag and receipt with the doorman. Thx!"
+           }'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WQSb6pFz4pOEUwZ36pSgsHGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"charge_customer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"return_store_credit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">created</span><span class="p">,</span><span class="w"> </span><span class="err">assigned</span><span class="p">,</span><span class="w"> </span><span class="err">inTransit</span><span class="p">,</span><span class="w"> </span><span class="err">arrived</span><span class="p">,</span><span class="w"> </span><span class="err">completed</span><span class="p">,</span><span class="w"> </span><span class="err">canceled</span><span class="p">,</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">aborted</span><span class="w">
+  </span><span class="s2">"worker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">'created'</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+      </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRw*OVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz*2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+      </span><span class="mf">47.018286</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_window"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">completed</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I left my bag and receipt with the doorman. Thx!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">,</span><span class="w"> </span><span class="s2">"638372427244"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509310701</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new <code>Task</code> from a <code>Task Estimate</code> and a <code>Time Window</code>.</p>
+<h3 id='http-request-25'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/task</code></p>
+<h3 id='body-parameters-15'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">estimate_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">The id of the task estimate you are converting to a task</td>
+</tr>
+<tr>
+<td style="text-align: left">time_window_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">The id of the desired <code>Time Window</code> to schedule the task for</td>
+</tr>
+<tr>
+<td style="text-align: left">charge_customer</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Set to <code>true</code> to charge the customer for the task</td>
+</tr>
+<tr>
+<td style="text-align: left">return_store_credit</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left">Set to <code>true</code> to return store credit to the consumer (only effects returns)</td>
+</tr>
+<tr>
+<td style="text-align: left">notes</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left"><strong>optional</strong> Entry or completion instructions from the customer to the worker</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-task'>Get a Task</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WQSb6pFz4pOEUwZ36pSgsHGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"charge_customer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"return_store_credit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">created</span><span class="p">,</span><span class="w"> </span><span class="err">assigned</span><span class="p">,</span><span class="w"> </span><span class="err">inTransit</span><span class="p">,</span><span class="w"> </span><span class="err">arrived</span><span class="p">,</span><span class="w"> </span><span class="err">completed</span><span class="p">,</span><span class="w"> </span><span class="err">canceled</span><span class="p">,</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">aborted</span><span class="w">
+  </span><span class="s2">"worker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">'created'</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+      </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+      </span><span class="mf">47.018286</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_window"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">completed</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I left my bag and receipt with the doorman. Thx!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">,</span><span class="w"> </span><span class="s2">"638372427244"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get a Task with a specific <code>id</code>.</p>
+<h3 id='http-request-26'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/task/&lt;task_id&gt;</code></p>
+<h2 id='update-a-task'>Update a Task</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{
+            "notes": "It'</span>s with my neighbor actually <span class="k">in </span>apartment 4B! Thank you!<span class="s2">", 
+            "</span>barcodes<span class="s2">": ["</span>724272463834<span class="s2">"]
+          }'
+</span></code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WQSb6pFz4pOEUwZ36pSgsHGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"charge_customer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"return_store_credit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">created</span><span class="p">,</span><span class="w"> </span><span class="err">assigned</span><span class="p">,</span><span class="w"> </span><span class="err">inTransit</span><span class="p">,</span><span class="w"> </span><span class="err">arrived</span><span class="p">,</span><span class="w"> </span><span class="err">completed</span><span class="p">,</span><span class="w"> </span><span class="err">canceled</span><span class="p">,</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">aborted</span><span class="w">
+  </span><span class="s2">"worker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">'created'</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+      </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer_external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S2rTLxc0jdRwOVvKVOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+      </span><span class="mf">47.018286</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_window"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">completed</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I left my bag and receipt with the doorman. Thx!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<hr>
+<h3 id='http-request-27'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA</code></p>
+<h3 id='body-parameters-16'>Body parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">charge_customer</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left"><strong>optional</strong> Set to <code>true</code> to charge the customer for the task</td>
+</tr>
+<tr>
+<td style="text-align: left">return_store_credit</td>
+<td style="text-align: left">Boolean</td>
+<td style="text-align: left"><strong>optional</strong> Set to <code>true</code> to return store credit to the consumer (only effects returns)</td>
+</tr>
+<tr>
+<td style="text-align: left">notes</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left"><strong>optional</strong> Entry or completion instructions from the customer to the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">barcodes</td>
+<td style="text-align: left"><em>array</em></td>
+<td style="text-align: left">An array of barcodes (strings) that must be scanned by the worker at pickup, and at transfer. Replaces the existing items. Sending an empty list throws an error. To delete / cancel a task see the delete enpoint.</td>
+</tr>
+<tr>
+<td style="text-align: left">time_window_id</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">The id of the desired <code>Time Window</code> to schedule the task for</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note</strong>: To change the time_window of a task you need to send the id of an unexpired <code>Time Window</code>. To do so, create another <code>Task Estimate</code> with the same customer and address, present the times to the consumer, and pass back the time_window_id of the newly selected <code>Time Window</code>.  </p>
+<h2 id='delete-a-task'>Delete a Task</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+
+<p>Delete a <code>Task</code> to cancel it. There may be a small fee if the time of cancelation is within a few hours of the pickup. </p>
+<h3 id='http-request-28'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/task/&lt;task_id&gt;</code></p>
+<h2 id='search-for-tasks'>Search for Tasks</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/tasks/search"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G"}'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WQSb6pFz4pOEUwZ36pSgsHGA"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"charge_customer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"return_store_credit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">created</span><span class="p">,</span><span class="w"> </span><span class="err">assigned</span><span class="p">,</span><span class="w"> </span><span class="err">inTransit</span><span class="p">,</span><span class="w"> </span><span class="err">arrived</span><span class="p">,</span><span class="w"> </span><span class="err">completed</span><span class="p">,</span><span class="w"> </span><span class="err">canceled</span><span class="p">,</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">aborted</span><span class="w">
+  </span><span class="s2">"worker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">status</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">'created'</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+      </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0jdRwOVvKVS2rTLxcOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer_external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S2rTLxc0jdRwOVvKVOd6Y5G"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SgHz2n4pOZ36b6pFspEUwGA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY Lower East Side"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mf">-102.400942</span><span class="p">,</span><span class="w">
+      </span><span class="mf">47.018286</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"176"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E 3rd St"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10009"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"time_window"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hz2npEUwG4pOZ36b6pFsSgA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508535337</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508595337</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="err">if</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">completed</span><span class="w">
+  </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I left my bag and receipt with the doorman. Thx!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pricing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"miles"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"base"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.25</span><span class="w"> 
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"barcodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"724272463834"</span><span class="p">]</span><span class="w">
+  </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509050462</span><span class="p">,</span><span class="w">
+</span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Search for upcoming, in progress, completed or canceled tasks matching <em>all</em> of any combination of the following search parameters: </p>
+<h3 id='http-request-29'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/task/search</code></p>
+<h3 id='body-parameters-17'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">worker_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with workers who have this id</td>
+</tr>
+<tr>
+<td style="text-align: left">customer_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with customer who have this id</td>
+</tr>
+<tr>
+<td style="text-align: left">customer_external_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with customer who have this external id</td>
+</tr>
+<tr>
+<td style="text-align: left">status</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with tasks that have this status</td>
+</tr>
+<tr>
+<td style="text-align: left">order_by</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> name (default), email, phone, on_duty, time_created, or time_last_modified</td>
+</tr>
+<tr>
+<td style="text-align: left">descending</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> true to list workers in descending order. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to limit to results to</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to offset results by</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>Webhooks</h1>
+<p>ShopTurn makes it possible for your applications to be notified exactly when important system events occur thanks to <a href="https://en.wikipedia.org/wiki/Webhook">Webhooks</a>.</p>
+
+<p>You&#39;re free to create as many webhooks as you like but keep in mind that a webhook always targets a single trigger and external url. </p>
+
+<p>We&#39;re also more than willing to add any webhooks you request within a few hours so shoot us an email if you need something we don&#39;t have yet! </p>
+<h2 id='kinds-of-webhooks'>Kinds of Webhooks</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Trigger Id</th>
+<th style="text-align: left">Trigger Name</th>
+<th style="text-align: left">Info</th>
+<th style="text-align: left">Payload</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">0</td>
+<td style="text-align: left">task_en_route</td>
+<td style="text-align: left">Worker began a task</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">1</td>
+<td style="text-align: left">task_eta</td>
+<td style="text-align: left">Every time the worker&#39;s eta changes by 1 minute (in either direction)</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">2</td>
+<td style="text-align: left">task_arrived</td>
+<td style="text-align: left">Worker arrived at task address</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">3</td>
+<td style="text-align: left">task_completed</td>
+<td style="text-align: left">Worker completed a task</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">4</td>
+<td style="text-align: left">task_failed</td>
+<td style="text-align: left">Task could not be completed. Reason included in <code>Task.failed_reason</code></td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">5</td>
+<td style="text-align: left">task_created</td>
+<td style="text-align: left">Task was created</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">6</td>
+<td style="text-align: left">task_updated</td>
+<td style="text-align: left">Task was changed</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">7</td>
+<td style="text-align: left">task_deleted</td>
+<td style="text-align: left">Task was canceled. Check pricing to see if the customer was charged</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">8</td>
+<td style="text-align: left">task_assigned</td>
+<td style="text-align: left">Task was assigned to a worker</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">9</td>
+<td style="text-align: left">task_unassigned</td>
+<td style="text-align: left">Task was unassigned from a worker</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">10</td>
+<td style="text-align: left">task_delayed</td>
+<td style="text-align: left">Task was delayed</td>
+<td style="text-align: left"><code>Task</code></td>
+</tr>
+<tr>
+<td style="text-align: left">11</td>
+<td style="text-align: left">worker_duty</td>
+<td style="text-align: left">Worker&#39;s on-duty status changed</td>
+<td style="text-align: left"><code>Worker</code></td>
+</tr>
+</tbody></table>
+
+<p>Webhooks can be maintained through the developer dashboard (under development) or via the API. We include the webhook id and name in the payload, so you can overload the same URL to handle all the webhookds. </p>
+
+<p>The JSON payload we will POST to your url will include the following:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">webhook_id</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left">The id of the webhook as listed above</td>
+</tr>
+<tr>
+<td style="text-align: left">webhook_name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The name of the webhook as listed above</td>
+</tr>
+<tr>
+<td style="text-align: left">secret</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A secret you can provide to us when you create the webhook for verification purposes</td>
+</tr>
+<tr>
+<td style="text-align: left">payload</td>
+<td style="text-align: left"><em>object</em></td>
+<td style="text-align: left">The payload of the webhook as listed above</td>
+</tr>
+<tr>
+<td style="text-align: left">time</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left">Unix epoch time the event took place</td>
+</tr>
+</tbody></table>
+<h2 id='failure-amp-retry'>Failure &amp; Retry</h2>
+<p>Any request that fails (non-200 status code) will be retried every 15 minutes for up to 24 hrs. You will receive an email after the 10th attempt, and after 24 hrs. If the webhook fails 288 times in a row (3 days) the webhook will be disabled and you will receive an email. </p>
+<h2 id='create-a-webhook'>Create a Webhook</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/webhook"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{
+            "url": "www.your.url/task",
+            "secret": "your_secret",
+            "trigger_name": "task_en_route"
+          }'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nIE19LipXcrzH1Pn1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.your.url/task"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"trigger_name"</span><span class="p">:</span><span class="w"> </span><span class="err">task_en_route</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"trigger_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509521194</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509521194</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a webhook.</p>
+<h3 id='http-request-30'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/webhooks</code></p>
+<h3 id='body-parameters-18'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">url</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The URL where we will make a post request when the webhook triggers</td>
+</tr>
+<tr>
+<td style="text-align: left">secret</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Secret we will send with each post request for you verification purposes</td>
+</tr>
+<tr>
+<td style="text-align: left">trigger_name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Name of the trigger</td>
+</tr>
+<tr>
+<td style="text-align: left">trigger_id</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Id of the trigger</td>
+</tr>
+</tbody></table>
+
+<p><strong>Note:</strong> You must include either the trigger_name or the trigger_id</p>
+<h2 id='get-all-webhooks'>Get all Webhooks</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/webhooks"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nIE19LipXcrzH1Pn1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.your.url/task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"trigger_name"</span><span class="p">:</span><span class="w"> </span><span class="err">task_en_route</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"trigger_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509521194</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509521194</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>List all webhooks belonging to your organization. </p>
+<h3 id='http-request-31'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/webhooks</code></p>
+<h2 id='delete-a-webhook'>Delete a Webhook</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+
+<p>Delete a webhook.</p>
+<h3 id='http-request-32'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/webhook/&lt;webhook_id&gt;</code></p>
 
       </div>
       <div class="dark-box">
