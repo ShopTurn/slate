@@ -386,7 +386,7 @@ Workers are the members of an organization who perform returns and deliveries. W
 
 ## Create a Worker
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/worker" \
@@ -406,7 +406,7 @@ curl  -X POST  "api.shopturn.com/v1/worker" \
             } '
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -461,14 +461,14 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 
 ## Get a Worker
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -503,7 +503,7 @@ Get a worker with a specific `id`.
 
 ## Update a Worker
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
@@ -511,7 +511,7 @@ curl  -X PUT  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -d '{"vehicle_description":"Tesla Model X"}'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -564,14 +564,14 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 
 ## Delete a Worker
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 
 Delete a Worker
@@ -654,7 +654,7 @@ A store is a location where deliveries start and returns are completed by worker
 
 ## Create a Store
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/store" \
@@ -673,7 +673,7 @@ curl  -X POST  "api.shopturn.com/v1/store" \
           }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -732,7 +732,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Get a Store
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
@@ -770,7 +770,7 @@ Get a store with a specific `id`.
 
 ## Update a Store
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
@@ -778,7 +778,7 @@ curl  -X PUT  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
       -d '{"address":{"unparsed":"4 S circle dr, great neck ny"}, "name": "NY Long Island"}'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -837,14 +837,14 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Delete a Store
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 
 Delete a store.
@@ -923,7 +923,7 @@ A customer is a target for a task. (i.e. the person ordering a delivery or sched
 
 ## Create a Customer
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/customer" \
@@ -938,7 +938,7 @@ curl  -X POST  "api.shopturn.com/v1/customer" \
           }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -980,7 +980,7 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 
 ## Get a Customer
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
@@ -1015,7 +1015,7 @@ Get a Customer with a specific `id`.
 
 ## Update a Customer
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
@@ -1023,7 +1023,7 @@ curl  -X PUT  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
       -d '{"name": "John Targarian", "email": "jtargarian@got.com"}'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -1064,14 +1064,14 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 
 ## Delete a Customer
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 
 Delete a customer.
@@ -1165,7 +1165,7 @@ expires_at | *number* | Unix timestamp for when the window must be reserved by.
 
 ## Create an Estimate
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/estimate" \
@@ -1181,7 +1181,7 @@ curl  -X POST  "api.shopturn.com/v1/estimate" \
           }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -1264,7 +1264,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Get a Task Estimate
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
@@ -1334,7 +1334,7 @@ The first step to creating a `Task` is to create a `Task Estimate`. Once created
 
 ## Create a Task
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/task" \
@@ -1348,7 +1348,7 @@ curl  -X POST  "api.shopturn.com/v1/task" \
            }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -1432,7 +1432,7 @@ notes | String | **optional** Entry or completion instructions from the customer
 
 ## Get a Task
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
@@ -1513,7 +1513,7 @@ Get a Task with a specific `id`.
 
 ## Update a Task
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
@@ -1524,7 +1524,7 @@ curl  -X PUT  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
           }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -1612,14 +1612,14 @@ time_window_id | String | The id of the desired `Time Window` to schedule the ta
 
 ## Delete a Task
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 
 Delete a `Task` to cancel it. There may be a small fee if the time of cancelation is within a few hours of the pickup. 
@@ -1771,7 +1771,7 @@ Any request that fails (non-200 status code) will be retried every 15 minutes fo
 
 ## Create a Webhook
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/webhook" \
@@ -1783,7 +1783,7 @@ curl  -X POST  "api.shopturn.com/v1/webhook" \
           }'
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 ```json
 {
@@ -1849,14 +1849,14 @@ List all webhooks belonging to your organization.
 
 ## Delete a Webhook
 
-> Example:
+> Example Request:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
-> `200 (application/json)`:
+> `Response: 200 (application/json)`:
 
 
 Delete a webhook.
