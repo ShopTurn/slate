@@ -93,7 +93,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 > `Example Request:`
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/auth/test" \
+curl  -X GET  "https://api.shopturn.com/v1/auth/test" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -117,7 +117,7 @@ Organizations are the top-most entity within ShopTurn. [Administrators](/#refere
 > `Example Request:`
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/organization" \
+curl  -X GET  "https://api.shopturn.com/v1/organization" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -147,7 +147,7 @@ Retrieve your organization's information.
 > `Example Request:`
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/organization" \
+curl  -X PUT  "https://api.shopturn.com/v1/organization" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
               "name": "New Name", 
@@ -196,7 +196,7 @@ Administrators are users who can access the ShopTurn dashboard. An organization 
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/admin" \
+curl  -X POST  "https://api.shopturn.com/v1/admin" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{ 
               "name": "Jane Doe", 
@@ -241,7 +241,7 @@ phone | *string* | Phone of the admin
 > `Example Request:`
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/admin/QSa52sfS733faK7Xs" \
+curl  -X GET  "https://api.shopturn.com/v1/admin/QSa52sfS733faK7Xs" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -273,7 +273,7 @@ Get an admin with a specific `id`.
 > `Example Request:`
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
+curl  -X PUT  "https://api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{ 
             "name": "Janette Doe", 
@@ -319,7 +319,7 @@ phone | *string* | **optional** New phone of the admin
 > `Example Request:`
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
+curl  -X DELETE   "https://api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -337,7 +337,7 @@ Delete an Admin
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/admin/search" \
+curl  -X POST  "https://api.shopturn.com/v1/admin/search" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"name":"%zach%"}'
 ```
@@ -389,7 +389,7 @@ Workers are the members of an organization who perform returns and deliveries. W
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/worker" \
+curl  -X POST  "https://api.shopturn.com/v1/worker" \
       -H  "Authorization: YOUR_API_KEY"
       -d  ' {
                 "name": "Janette Doe",
@@ -464,7 +464,7 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 > `Example Request`:
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
+curl  -X GET  "https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -506,7 +506,7 @@ Get a worker with a specific `id`.
 > `Example Request`:
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
+curl  -X PUT  "https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"vehicle_description":"Tesla Model X"}'
 ```
@@ -567,7 +567,7 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 > `Example Request`:
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
+curl  -X DELETE   "https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -585,7 +585,7 @@ Delete a Worker
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/worker/search" \
+curl  -X POST  "https://api.shopturn.com/v1/worker/search" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"name":"Janette%"}'
 ```
@@ -653,7 +653,7 @@ A store is a location where deliveries start and returns are completed by worker
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/store" \
+curl  -X POST  "https://api.shopturn.com/v1/store" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
               "name": "NY Lower East Side"
@@ -731,7 +731,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 > `Example Request`:
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+curl  -X GET  "https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -769,7 +769,7 @@ Get a store with a specific `id`.
 > `Example Request`:
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+curl  -X PUT  "https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"address":{"unparsed":"4 S circle dr, great neck ny"}, "name": "NY Long Island"}'
 ```
@@ -836,7 +836,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 > `Example Request`:
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+curl  -X DELETE   "https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -855,7 +855,7 @@ Delete a store.
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/store/search" \
+curl  -X POST  "https://api.shopturn.com/v1/store/search" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"name":"NY Long Island"}'
 ```
@@ -922,7 +922,7 @@ A customer is a target for a task. (i.e. the person ordering a delivery or sched
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/customer" \
+curl  -X POST  "https://api.shopturn.com/v1/customer" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
             "name": "John Snow",
@@ -979,7 +979,7 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 > `Example Request`:
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+curl  -X GET  "https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1014,7 +1014,7 @@ Get a Customer with a specific `id`.
 > `Example Request`:
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+curl  -X PUT  "https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"name": "John Targarian", "email": "jtargarian@got.com"}'
 ```
@@ -1063,7 +1063,7 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 > `Example Request`:
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+curl  -X DELETE   "https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1082,7 +1082,7 @@ Delete a customer.
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/customer/search" \
+curl  -X POST  "https://api.shopturn.com/v1/customer/search" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{
             "name":"%snow%"
@@ -1164,7 +1164,7 @@ expires_at | *number* | Unix timestamp for when the window must be reserved by.
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/estimate" \
+curl  -X POST  "https://api.shopturn.com/v1/estimate" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
             "address":{
@@ -1263,7 +1263,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 > `Example Request`:
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
+curl  -X GET  "https://api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1333,7 +1333,7 @@ The first step to creating a `Task` is to create a `Task Estimate`. Once created
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/task" \
+curl  -X POST  "https://api.shopturn.com/v1/task" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
                 "estimate_id":"FsSgHz2n4pOZ36b6ppEUwGA",
@@ -1431,7 +1431,7 @@ notes | String | **optional** Entry or completion instructions from the customer
 > `Example Request`:
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+curl  -X GET  "https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1512,7 +1512,7 @@ Get a Task with a specific `id`.
 > `Example Request`:
 
 ```shell
-curl  -X PUT  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+curl  -X PUT  "https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{
             "notes": "It's with my neighbor actually in apartment 4B! Thank you!", 
@@ -1611,7 +1611,7 @@ time_window_id | String | The id of the desired `Time Window` to schedule the ta
 > `Example Request`:
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+curl  -X DELETE   "https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1629,7 +1629,7 @@ Delete a `Task` to cancel it. There may be a small fee if the time of cancelatio
 > `Example Request:`
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/tasks/search" \
+curl  -X POST  "https://api.shopturn.com/v1/tasks/search" \
       -H  "Authorization: YOUR_API_KEY"
       -d '{"customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G"}'
 ```
@@ -1770,7 +1770,7 @@ Any request that fails (non-200 status code) will be retried every 15 minutes fo
 > `Example Request`:
 
 ```shell
-curl  -X POST  "api.shopturn.com/v1/webhook" \
+curl  -X POST  "https://api.shopturn.com/v1/webhook" \
       -H  "Authorization: YOUR_API_KEY"
       -d  '{
             "url": "www.your.url/task",
@@ -1815,7 +1815,7 @@ trigger_id | *string* | **optional** Id of the trigger
 > `Example Request:`
 
 ```shell
-curl  -X GET  "api.shopturn.com/v1/webhooks" \
+curl  -X GET  "https://api.shopturn.com/v1/webhooks" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
@@ -1848,7 +1848,7 @@ List all webhooks belonging to your organization.
 > `Example Request`:
 
 ```shell
-curl  -X DELETE   "api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1" \
+curl  -X DELETE   "https://api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1" \
       -H  "Authorization: YOUR_API_KEY"
 ```
 
