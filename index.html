@@ -1153,8 +1153,6 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Search for workers matching <em>all</em> of any combination of the following search parameters: </p>
 <h3 id='http-request-12'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/worker/search</code></p>
-<h3 id='body-parameters-7'>Body Parameters:</h3>
-<p>Search for workers matching <em>all</em> of any combination of the following search parameters:</p>
 <h3 id='url-parameters'>URL parameters:</h3>
 <table><thead>
 <tr>
@@ -1267,7 +1265,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Create a new store to start accepting returns and scheduling deliveries.</p>
 <h3 id='http-request-13'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/store</code></p>
-<h3 id='body-parameters-8'>Body Parameters:</h3>
+<h3 id='body-parameters-7'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1429,7 +1427,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Update a store&#39;s information.</p>
 <h3 id='http-request-15'>HTTP Request:</h3>
 <p><code>PUT https://api.shopturn.com/v1/store/&lt;store_id&gt;</code></p>
-<h3 id='body-parameters-9'>Body parameters:</h3>
+<h3 id='body-parameters-8'>Body parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1577,7 +1575,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Search for stores matching <em>all</em> of any combination of the following search parameters: </p>
 <h3 id='http-request-17'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/store/search</code></p>
-<h3 id='body-parameters-10'>Body Parameters:</h3>
+<h3 id='body-parameters-9'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1700,7 +1698,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Create a new customer to start requesting returns and deliveries.</p>
 <h3 id='http-request-18'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/customer</code></p>
-<h3 id='body-parameters-11'>Body Parameters:</h3>
+<h3 id='body-parameters-10'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1808,7 +1806,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Update a Customer&#39;s information. Changing a customer&#39;s <code>email</code> or <code>phone</code> will cause the values of <code>email_verified</code> or <code>phone_verified</code> to reset. It will also attempt to verify them again if set. Setting a new <code>email</code> and setting <code>skip_email_verification</code> to true in the same request will prevent the API from verifying the new email. Same goes for phone. </p>
 <h3 id='http-request-20'>HTTP Request:</h3>
 <p><code>PUT https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G</code></p>
-<h3 id='body-parameters-12'>Body parameters:</h3>
+<h3 id='body-parameters-11'>Body parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1915,7 +1913,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Search for customers matching <em>all</em> of any combination of the following search parameters:</p>
 <h3 id='http-request-22'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/customers/search</code></p>
-<h3 id='body-parameters-13'>Body Parameters:</h3>
+<h3 id='body-parameters-12'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2059,7 +2057,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Creating a <code>Task Estimate</code> is the first step to creating a <code>Task</code>. </p>
 <h3 id='http-request-23'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/estimate</code></p>
-<h3 id='body-parameters-14'>Body Parameters:</h3>
+<h3 id='body-parameters-13'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2298,7 +2296,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Create a new <code>Task</code> from a <code>Task Estimate</code> and a <code>Time Window</code>.</p>
 <h3 id='http-request-25'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/task</code></p>
-<h3 id='body-parameters-15'>Body Parameters:</h3>
+<h3 id='body-parameters-14'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2487,7 +2485,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <hr>
 <h3 id='http-request-27'>HTTP Request:</h3>
 <p><code>PUT https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA</code></p>
-<h3 id='body-parameters-16'>Body parameters:</h3>
+<h3 id='body-parameters-15'>Body parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2618,7 +2616,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Search for upcoming, in progress, completed or canceled tasks matching <em>all</em> of any combination of the following search parameters: </p>
 <h3 id='http-request-29'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/task/search</code></p>
-<h3 id='body-parameters-17'>Body Parameters:</h3>
+<h3 id='body-parameters-16'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -2823,7 +2821,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Create a webhook.</p>
 <h3 id='http-request-30'>HTTP Request:</h3>
 <p><code>POST https://api.shopturn.com/v1/webhooks</code></p>
-<h3 id='body-parameters-18'>Body Parameters:</h3>
+<h3 id='body-parameters-17'>Body Parameters:</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
