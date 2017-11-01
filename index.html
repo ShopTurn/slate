@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;curl&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,9 +210,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="curl">curl</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -261,31 +258,48 @@
               </ul>
           </li>
           <li>
-            <a href="#introduction-2" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication-2" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#admins" class="toc-h1 toc-link" data-title="Admins">Admins</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#create-an-admin" class="toc-h2 toc-link" data-title="Create an Admin">Create an Admin</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get-an-admin" class="toc-h2 toc-link" data-title="Get an Admin">Get an Admin</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#update-an-admin" class="toc-h2 toc-link" data-title="Update an Admin">Update an Admin</a>
+                  </li>
+                  <li>
+                    <a href="#delete-an-admin" class="toc-h2 toc-link" data-title="Delete an Admin">Delete an Admin</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-admins" class="toc-h2 toc-link" data-title="Search for Admins">Search for Admins</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#workers" class="toc-h1 toc-link" data-title="Workers">Workers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-worker" class="toc-h2 toc-link" data-title="Create a Worker">Create a Worker</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-worker" class="toc-h2 toc-link" data-title="Get a Worker">Get a Worker</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-worker" class="toc-h2 toc-link" data-title="Update a Worker">Update a Worker</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-worker" class="toc-h2 toc-link" data-title="Delete a Worker">Delete a Worker</a>
+                  </li>
+                  <li>
+                    <a href="#search-for-workers" class="toc-h2 toc-link" data-title="Search for Workers">Search for Workers</a>
+                  </li>
+              </ul>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a target="_blank" href='https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=jake%40shopturn.com'>Sign Up for a Developer Key</a></li>
+            <li><a target="_blank" href='https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=jake%40shopturn.com'>Request API Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -407,13 +421,13 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 </aside>
 <h2 id='test-api-key'>Test API Key</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/auth/test"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>Example Response:</p>
+<p><code>Response: 200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="s2">"Hello ORG_NAME! Your request is valid."</span><span class="w">
 </span></code></pre>
@@ -424,13 +438,13 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p>Organizations are the top-most entity within ShopTurn. <a href="/#reference/Administrators">Administrators</a>, <a href="/#reference/workers">Workers</a>, <a href="/#reference/stores">Stores</a> and <a href="/#reference/tasks">Tasks</a> all belong to an organization. </p>
 <h2 id='get-organization'>Get Organization</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>Example Response:</p>
+<p><code>Response: 200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a848a8ead94f879b4c3a0e533beca7"</span><span class="p">,</span><span class="w">
@@ -448,14 +462,14 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <p><code>GET https://api.shopturn.com/v1/organization</code></p>
 <h2 id='update-organization'>Update Organization</h2>
 <blockquote>
-<p>Example Request:</p>
+<p><code>Example:</code></p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{"name": "New Name", "email": "admin2@retailer.com", "timezone": "America/New_York"}'</span>
 </code></pre>
 <blockquote>
-<p>Example Response:</p>
+<p><code>Response: 200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a848a8ead94f879b4c3a0e533beca7"</span><span class="p">,</span><span class="w">
@@ -500,247 +514,609 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <td style="text-align: left"><strong>optional</strong> timezone the organization operates in</td>
 </tr>
 </tbody></table>
-<h1 id='introduction-2'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication-2'>Authentication</h1>
+<h1 id='admins'>Admins</h1>
+<p>Administrators are users who can access the ShopTurn dashboard. An organization has one administrator of type <code>super</code> and zero or more of type <code>standard</code> (also known as dispatchers). Dispatchers can manage workers, tasks, and more via the dashboard.</p>
+<h2 id='create-an-admin'>Create an Admin</h2>
 <blockquote>
-<p>To authorize, use this code:</p>
+<p><code>Example:</code></p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{ "name": "Jane Doe", "email": "jane@retailer.com", "phone": "(123) 456-7890"}'</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p><code>Response: 200 (application/json)</code>:</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EBa52sfS733faK7Xs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3gUcz9mNDgNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@retailer.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_super"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+11234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Create a new Admin. An email will be sent to the provided email address to further onboard them. </p>
+<h3 id='http-request-3'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/admin</code></p>
+<h3 id='body-parameters-2'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Full name of the admin</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Email of the admin</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Phone of the admin</td>
+</tr>
+</tbody></table>
+<h2 id='get-an-admin'>Get an Admin</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/admin/QSa52sfS733faK7Xs"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QSa52sfS733faK7Xs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3gUcz9mNDgNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zach@retailer.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_super"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zach Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+11234567890"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get an admin with a specific <code>id</code>.</p>
+<h2 id='update-an-admin'>Update an Admin</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{ "name": "Janette Doe", "email": "janette@retailer.com", "phone": "+10987654321" }'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EBa52sfS733faK7Xs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3gUcz9mNDgNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette@retailer.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_super"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update an admin&#39;s information.</p>
+<h3 id='http-request-4'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/admin/admin_id</code></p>
+<h3 id='body-parameters-3'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> New name of the admin</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> New email of the admin</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> New phone of the admin</td>
+</tr>
+</tbody></table>
+<h2 id='delete-an-admin'>Delete an Admin</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+
+<p>Delete an Admin</p>
+<h3 id='http-request-5'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/admin</code></p>
+<h2 id='search-for-admins'>Search for Admins</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin/search"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"name":"%zach%"}'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QSa52sfS733faK7Xs"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3gUcz9mNDgNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zach@retailer.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_super"</span><span class="p">:</span><span class="w"> </span><span class="s2">"standard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zach Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+11234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w"> 
+  </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<p>Search for admins matching <em>all</em> of any combination of the following search parameters: </p>
+<h3 id='http-request-6'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/admin/search</code></p>
+<h3 id='body-parameters-4'>Body Parameters:</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with names containing or equal to this value</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with phone numbers containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with emails containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">order_by</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> name (default), email, phone, on_duty, time_created, or time_last_modified</td>
+</tr>
+<tr>
+<td style="text-align: left">descending</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> true to list workers in descending order. Defaults to <code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to limit to results to</td>
+</tr>
+<tr>
+<td style="text-align: left">offset</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to offset results by</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h1 id='workers'>Workers</h1>
+<p>Workers are the members of an organization who perform returns and deliveries. Workers have a vehicle with which tasks are completed.</p>
+<h2 id='create-a-worker'>Create a Worker</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">' {
+                "name": "Janette Doe",
+                "email": "janette@retailer.com",
+                "phone": "+10987654321"
+                "vehicle_type": "CAR", 
+                "vehicle_license_plate": "FYC-7992", // (optional for cyclist/foot) license plate or relevant visible identifier
+                "vehicle_color": "#000000", // (only required for VAN/CAR)
+                "vehicle_description": "Toyata Camry", (only required for VAN/CAR)
+                "vehicle_year": 2014, (only required for VAN/CAR)
+                "capacity_value": 10000.00, // max total value the worker can carry
+                "capacity_lbs": 200, // max lbs the worker can carry
+                "capacity_items": 10 // max items the worker can carrt
+            } '</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p><code>200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+    </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">off</span><span class="w"> </span><span class="err">duty</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">off</span><span class="w"> </span><span class="err">duty</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>Create a new worker. An SMS will be sent to the worker&#39;s phone with a temporary password and iOS/Android download details.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>After logging in for the first time, the worker will be required to create a permanent password.</p>
+<h3 id='http-request-7'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/worker</code></p>
+<h3 id='body-parameters-5'>Body Parameters:</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Name of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Email of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Phone of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_type</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Type of vehicle (VAN, CAR, MOTORBIKE, or BIKE)</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_license_plate</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Email of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">Phone of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_color</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A web safe hex color (ex: #ffffff or #96DD93)</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_description</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The make and model of the vehicle</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_year</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left">The year the vehicle was made</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_value</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> Maximum value of merchandise the worker can carry</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_lbs</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong>  Maximum weight in lbs the worker can carry</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_items</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left"><strong>optional</strong>  Maximum number of items the worker can carry</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='get-a-worker'>Get a Worker</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p><code>200 (application/json)</code>:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">tJJtJJdC</span><span class="mi">2</span><span class="err">qdC</span><span class="mi">2</span><span class="err">q</span><span class="p">,</span><span class="w"> </span><span class="err">tJC</span><span class="mi">2</span><span class="err">imptJdqmptJ</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+    </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Toyota Camry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">-102.123412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">47.512341</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>Get a worker with a specific <code>id</code>.</p>
+<h2 id='update-a-worker'>Update a Worker</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"vehicle_description":"Tesla Model X"}'</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+    </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Model X"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update a worker&#39;s information. Vehicle and capacity attributes can be nulled. (null vehicle means on-foot worker)</p>
+<h3 id='http-request-8'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/worker/worker_id</code></p>
+<h3 id='body-parameters-6'>Body Parameters:</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Name of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Email of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Phone of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_type</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Type of vehicle (VAN, CAR, MOTORBIKE, or BIKE)</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_license_plate</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Email of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Phone of the worker</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_color</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> A web safe hex color (ex: #ffffff or #96DD93)</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_description</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> The make and model of the vehicle</td>
+</tr>
+<tr>
+<td style="text-align: left">vehicle_year</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left"><strong>optional</strong> The year the vehicle was made</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_value</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> Maximum value of merchandise the worker can carry</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_lbs</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong>  Maximum weight in lbs the worker can carry</td>
+</tr>
+<tr>
+<td style="text-align: left">capacity_items</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left"><strong>optional</strong>  Maximum number of items the worker can carry</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<h2 id='delete-a-worker'>Delete a Worker</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p><code>200 (application/json)</code>:</p>
+</blockquote>
 
-<p>The Kittn API uses the following error codes:</p>
-
+<p>Delete a Worker</p>
+<h3 id='http-request-9'>HTTP Request:</h3>
+<p><code>DELETE https://api.shopturn.com/v1/worker/worker_id</code></p>
+<h2 id='search-for-workers'>Search for Workers</h2>
+<blockquote>
+<p><code>Example:</code></p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker/search"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d <span class="s1">'{"name":"Janette%"}'</span>
+</code></pre>
+<blockquote>
+<p><code>Response: 200 (application/json)</code>:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sFtimptJJdC2qmptJ"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1508438064</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"time_last_seen"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"organization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mDdfg3mNz9agUcNDrTsNOL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Janette Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10987654321"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"current_task"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">tasks</span><span class="w"> </span><span class="err">assigned</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">driver</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">(</span><span class="mi">10-12</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="mi">12-2</span><span class="err">pm</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">8-10</span><span class="err">pm)</span><span class="w">
+      </span><span class="s2">"on_duty"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"delay_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">(minutes</span><span class="w"> </span><span class="err">behind</span><span class="w"> </span><span class="err">schedule)</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"vehicle_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5F4RR11235JAx3wL8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehicle_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehicle_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tesla Model X"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehicle_license_plate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FYC-7992"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehicle_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"vehicle_year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Search for workers matching <em>all</em> of any combination of the following search parameters: </p>
+<h3 id='http-request-10'>HTTP Request:</h3>
+<p><code>POST https://api.shopturn.com/v1/worker/search</code></p>
+<h3 id='body-parameters-7'>Body Parameters:</h3>
+<p>Search for workers matching <em>all</em> of any combination of the following search parameters:</p>
+<h3 id='url-parameters'>URL parameters:</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td style="text-align: left">latitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The latitude value of the search coordinates.</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td style="text-align: left">longitude</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> The longitude value of the search coordinates.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td style="text-align: left">radius</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> Length in meters of desired radius. Defaults to 1000. Max value is 10000.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td style="text-align: left">phone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with phone numbers containing or equal to this value</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with names containing or equal to this value</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with emails containing or equal to this value</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td style="text-align: left">on_duty</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> on_duty value to search for</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td style="text-align: left">order_by</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> name (default), email, phone, on_duty, delay_time, tasks, time_created, time_last_modified, or time_last_seen</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td style="text-align: left">descending</td>
+<td style="text-align: left"><em>boolean</em></td>
+<td style="text-align: left"><strong>optional</strong> true to list workers in descending order. Defaults to <code>false</code></td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td style="text-align: left">limit</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to limit to results to</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td style="text-align: left">offset</td>
+<td style="text-align: left"><em>number</em></td>
+<td style="text-align: left"><strong>optional</strong> value to offset results by</td>
 </tr>
 </tbody></table>
+
+<p>Latitude and longitude must both be included or both be excluded.</p>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="curl">curl</a>
-          </div>
       </div>
     </div>
   </body>
