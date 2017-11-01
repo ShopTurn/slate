@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>ShopTurn API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;curl&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="curl">curl</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -223,9 +220,51 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#general-information" class="toc-h2 toc-link" data-title="General Information">General Information</a>
+                  </li>
+                  <li>
+                    <a href="#api-standards" class="toc-h2 toc-link" data-title="API Standards">API Standards</a>
+                  </li>
+                  <li>
+                    <a href="#shopturn-entities" class="toc-h2 toc-link" data-title="ShopTurn Entities">ShopTurn Entities</a>
+                  </li>
+                  <li>
+                    <a href="#rate-limiting" class="toc-h2 toc-link" data-title="Rate Limiting">Rate Limiting</a>
+                  </li>
+                  <li>
+                    <a href="#errors-amp-status-codes" class="toc-h2 toc-link" data-title="Errors &amp; Status Codes">Errors &amp; Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#status" class="toc-h2 toc-link" data-title="Status">Status</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#test-api-key" class="toc-h2 toc-link" data-title="Test API Key">Test API Key</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#organizations" class="toc-h1 toc-link" data-title="Organizations">Organizations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-organization" class="toc-h2 toc-link" data-title="Get Organization">Get Organization</a>
+                  </li>
+                  <li>
+                    <a href="#update-organization" class="toc-h2 toc-link" data-title="Update Organization">Update Organization</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#introduction-2" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication-2" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
             <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
@@ -246,20 +285,228 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a target="_blank" href='https://mail.google.com/mail/u/0/?view=cm&ui=2&tf=0&fs=1&to=jake%40shopturn.com'>Sign Up for a Developer Key</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1><h2 id='general-information'>General Information</h2>
+<p>The ShopTurn API is a RESTful web service for developers to programmatically interact with ShopTurn’s real-time delivery and return logistics platform.</p>
+
+<p>All data exchanged between clients and the API is JSON over HTTPS. Note that we will only accept <code>application/json</code> as content type and that the request body, if relevant, must be JSON-encoded.</p>
+
+<p>The base URL for the ShopTurn API is <code>https://shopturn.com/api/v1</code>.</p>
+
+<p>All sample requests in this documentation can be viewed in multiple programming languages for your convenience.</p>
+
+<p>All body parameters are required unless noted otherwise.
+Task
+If you have any questions, feedback, or a bug you&#39;d like to report, drop us a line at <a href="mailto://jake@shopturn.com">jake@shopturn.com</a>.</p>
+<h2 id='api-standards'>API Standards</h2>
+<p>The ShopTurn API has been architected with standards at its core.</p>
+
+<ul>
+<li>numbers will never be strings</li>
+<li><code>null</code> is always returned for optional properties that have not been set</li>
+<li>geographic coordinates are always returned as per the <a href="http://geojson.org/">GeoJSON Standard</a></li>
+<li>geographic coordinates are always requested via a latitude and a longitude property </li>
+<li>timestamps are always formatted as <a href="https://en.wikipedia.org/wiki/Unix_time">Unix timestamps</a></li>
+<li>most endpoints return a body, but there are some exceptions. For example deleting an object would repond with a <code>200</code> status code but without a body.</li>
+<li>the ShopTurn API uses URL-safe resource IDs</li>
+<li>phone number are always returned and requested in the format +19991234567, following <a href="https://en.wikipedia.org/wiki/E.164">E.164</a> standards</li>
+<li>to remove an optional property from an entity, set the value to <code>null</code>.</li>
+<li>include an array of multiple entities to add them in bulk.</li>
+</ul>
+<h2 id='shopturn-entities'>ShopTurn Entities</h2>
+<p>TBA</p>
+
+<p>Include an array of multiple entities to add them in bulk.</p>
+<h2 id='rate-limiting'>Rate Limiting</h2>
+<p>There is a 25 requests per second limitation set accross all of your organizations API keys. If you exceed 25 requests per second, you will receive a 429 error. If you require a higher request rate, please don&#39;t hesitate to contact us.</p>
+<h2 id='errors-amp-status-codes'>Errors &amp; Status Codes</h2>
+<p>The API responds with a non-200 status code and an <code>Error</code> object when something has gone awry. An <code>Error</code> object is always provided so your application has visibility into what has gone wrong. </p>
+
+<p>An <code>Error</code> object always has the following properties:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left"><em>integer</em></td>
+<td style="text-align: left">The status code of the response</td>
+</tr>
+<tr>
+<td style="text-align: left">type</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">The error type</td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left">A message for debugging purposes</td>
+</tr>
+</tbody></table>
+
+<p><code>Error</code> types:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Code</th>
+<th style="text-align: left">Error Type</th>
+<th style="text-align: left">Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">400</td>
+<td style="text-align: left">BadRequest</td>
+<td style="text-align: left">The request is invalid, missing information, or out of context. The status text will contain more insight.</td>
+</tr>
+<tr>
+<td style="text-align: left">401</td>
+<td style="text-align: left">Unauthorized</td>
+<td style="text-align: left">The authorization header (your API key) is either missing, invalid, or expired.</td>
+</tr>
+<tr>
+<td style="text-align: left">403</td>
+<td style="text-align: left">Forbidden</td>
+<td style="text-align: left">The request is kosher, but has been refused.</td>
+</tr>
+<tr>
+<td style="text-align: left">404</td>
+<td style="text-align: left">NotFound</td>
+<td style="text-align: left">The requested resource could not be found.</td>
+</tr>
+<tr>
+<td style="text-align: left">429</td>
+<td style="text-align: left">ClientError</td>
+<td style="text-align: left">The request was refused per our rate limiting policy.</td>
+</tr>
+<tr>
+<td style="text-align: left">50X</td>
+<td style="text-align: left">InternalError</td>
+<td style="text-align: left">Generic error. See the message for more information.</td>
+</tr>
+</tbody></table>
+<h2 id='status'>Status</h2>
+<p>To check the status of the API head over to our <a href="www.shopturn.com">status page</a> (under development). We will also notify you via email when the status changes. </p>
+<h1 id='authentication'>Authentication</h1>
+<p>Requests must be authenticated by setting the <code>Authorization</code> header to one of your organization’s API keys.</p>
+
+<p>Admins can request API keys by emailing <a href="mailto://jake@shopturn.com">jake@shopturn.com</a> while the dashboard is under development. You can request as many API keys as required to suit your different applications and environments. </p>
+
+<p>If you requite a separate organization for testing purposes, please contact us.</p>
+
+<aside class="notice">
+You must include <code>Authorization: API Key</code> as a header in every request.
+</aside>
+<h2 id='test-api-key'>Test API Key</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/auth/test"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="s2">"Hello ORG_NAME! Your request is valid."</span><span class="w">
+</span></code></pre>
+<p><code>GET https://api.shopturn.com/v1/auth/test</code></p>
+
+<p>Check that you are formatting your request correctly and that your API key is valid.</p>
+<h1 id='organizations'>Organizations</h1>
+<p>Organizations are the top-most entity within ShopTurn. <a href="/#reference/Administrators">Administrators</a>, <a href="/#reference/workers">Workers</a>, <a href="/#reference/stores">Stores</a> and <a href="/#reference/tasks">Tasks</a> all belong to an organization. </p>
+<h2 id='get-organization'>Get Organization</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a848a8ead94f879b4c3a0e533beca7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ST Retailer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509310476</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@retailer.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"img.google.com/your_logo_url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509310701</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/Los_Angeles"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Retrieve your organization&#39;s information.</p>
+<h3 id='http-request'>HTTP Request:</h3>
+<p><code>GET https://api.shopturn.com/v1/organization</code></p>
+<h2 id='update-organization'>Update Organization</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
+      -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
+      -d  <span class="s1">'{"name": "New Name", "email": "admin2@retailer.com", "timezone": "America/New_York"}'</span>
+</code></pre>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62a848a8ead94f879b4c3a0e533beca7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509310476</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin2@retailer.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"img.google.com/your_logo_url"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"time_last_modified"</span><span class="p">:</span><span class="w"> </span><span class="mi">1509310701</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update the attributes of your organization.</p>
+<h3 id='http-request-2'>HTTP Request:</h3>
+<p><code>PUT https://api.shopturn.com/v1/organization</code></p>
+<h3 id='body-parameters'>Body Parameters:</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Type</th>
+<th style="text-align: left">Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with names containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> Matches entities with emails containing or equal to this value</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> URL to new image</td>
+</tr>
+<tr>
+<td style="text-align: left">timezone</td>
+<td style="text-align: left"><em>string</em></td>
+<td style="text-align: left"><strong>optional</strong> timezone the organization operates in</td>
+</tr>
+</tbody></table>
+<h1 id='introduction-2'>Introduction</h1>
 <p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
 
 <p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='authentication-2'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
@@ -325,7 +572,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -379,7 +626,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -418,7 +665,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -492,10 +739,7 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="curl">curl</a>
           </div>
       </div>
     </div>
