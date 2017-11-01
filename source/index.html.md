@@ -90,7 +90,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 
 ## Test API Key
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/auth/test" \
@@ -114,7 +114,7 @@ Organizations are the top-most entity within ShopTurn. [Administrators](/#refere
 
 ## Get Organization
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/organization" \
@@ -144,7 +144,7 @@ Retrieve your organization's information.
 
 ## Update Organization
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/organization" \
@@ -193,7 +193,7 @@ Administrators are users who can access the ShopTurn dashboard. An organization 
 
 ## Create an Admin
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/admin" \
@@ -238,7 +238,7 @@ phone | *string* | Phone of the admin
 
 ## Get an Admin
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/admin/QSa52sfS733faK7Xs" \
@@ -270,7 +270,7 @@ Get an admin with a specific `id`.
 
 ## Update an Admin
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
@@ -316,7 +316,7 @@ phone | *string* | **optional** New phone of the admin
 
 ## Delete an Admin
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
@@ -334,7 +334,7 @@ Delete an Admin
 
 ## Search for Admins
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/admin/search" \
@@ -386,7 +386,7 @@ Workers are the members of an organization who perform returns and deliveries. W
 
 ## Create a Worker
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/worker" \
@@ -461,7 +461,7 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 
 ## Get a Worker
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
@@ -503,7 +503,7 @@ Get a worker with a specific `id`.
 
 ## Update a Worker
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
@@ -564,7 +564,7 @@ capacity_items | *integer* | **optional**  Maximum number of items the worker ca
 
 ## Delete a Worker
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
@@ -582,7 +582,7 @@ Delete a Worker
 
 ## Search for Workers
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/worker/search" \
@@ -654,7 +654,7 @@ A store is a location where deliveries start and returns are completed by worker
 
 ## Create a Store
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/store" \
@@ -732,7 +732,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Get a Store
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
@@ -770,7 +770,7 @@ Get a store with a specific `id`.
 
 ## Update a Store
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
@@ -837,7 +837,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Delete a Store
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
@@ -856,7 +856,7 @@ Delete a store.
 
 ## Search for Stores
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/store/search" \
@@ -923,7 +923,7 @@ A customer is a target for a task. (i.e. the person ordering a delivery or sched
 
 ## Create a Customer
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/customer" \
@@ -980,7 +980,7 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 
 ## Get a Customer
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
@@ -1015,7 +1015,7 @@ Get a Customer with a specific `id`.
 
 ## Update a Customer
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
@@ -1064,7 +1064,7 @@ skip_email_verification | *boolean* | **optional** Whether ShopTurn should not v
 
 ## Delete a Customer
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
@@ -1083,7 +1083,7 @@ Delete a customer.
 
 ## Search for Customers
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/customer/search" \
@@ -1165,7 +1165,7 @@ expires_at | *number* | Unix timestamp for when the window must be reserved by.
 
 ## Create an Estimate
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/estimate" \
@@ -1264,7 +1264,7 @@ unparsed | *string* | **optional** Unparsed human-readable address on one line. 
 
 ## Get a Task Estimate
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
@@ -1334,7 +1334,7 @@ The first step to creating a `Task` is to create a `Task Estimate`. Once created
 
 ## Create a Task
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/task" \
@@ -1432,7 +1432,7 @@ notes | String | **optional** Entry or completion instructions from the customer
 
 ## Get a Task
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
@@ -1513,7 +1513,7 @@ Get a Task with a specific `id`.
 
 ## Update a Task
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
@@ -1612,7 +1612,7 @@ time_window_id | String | The id of the desired `Time Window` to schedule the ta
 
 ## Delete a Task
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
@@ -1630,7 +1630,7 @@ Delete a `Task` to cancel it. There may be a small fee if the time of cancelatio
 
 ## Search for Tasks
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/tasks/search" \
@@ -1771,7 +1771,7 @@ Any request that fails (non-200 status code) will be retried every 15 minutes fo
 
 ## Create a Webhook
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/webhook" \
@@ -1816,7 +1816,7 @@ trigger_id | *string* | **optional** Id of the trigger
 
 ## Get all Webhooks
 
-> `Example:`
+> `Example Request:`
 
 ```shell
 curl  -X GET  "api.shopturn.com/v1/webhooks" \
@@ -1849,7 +1849,7 @@ List all webhooks belonging to your organization.
 
 ## Delete a Webhook
 
-> Example Request:
+> `Example Request`:
 
 ```shell
 curl  -X DELETE   "api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1" \
