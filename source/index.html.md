@@ -149,7 +149,11 @@ Retrieve your organization's information.
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/organization" \
       -H  "Authorization: YOUR_API_KEY"
-      -d  '{"name": "New Name", "email": "admin2@retailer.com", "timezone": "America/New_York"}'
+      -d  '{
+              "name": "New Name", 
+              "email": "admin2@retailer.com", 
+              "timezone": "America/New_York"
+           }'
 ```
 
 > `Response: 200 (application/json)`:
@@ -194,7 +198,11 @@ Administrators are users who can access the ShopTurn dashboard. An organization 
 ```shell
 curl  -X POST  "api.shopturn.com/v1/admin" \
       -H  "Authorization: YOUR_API_KEY"
-      -d  '{ "name": "Jane Doe", "email": "jane@retailer.com", "phone": "(123) 456-7890"}'
+      -d  '{ 
+              "name": "Jane Doe", 
+              "email": "jane@retailer.com", 
+              "phone": "(123) 456-7890"
+           }'
 ```
 
 > `Response: 200 (application/json)`:
@@ -267,7 +275,11 @@ Get an admin with a specific `id`.
 ```shell
 curl  -X PUT  "api.shopturn.com/v1/admin/EBa52sfS733faK7Xs" \
       -H  "Authorization: YOUR_API_KEY"
-      -d '{ "name": "Janette Doe", "email": "janette@retailer.com", "phone": "+10987654321" }'
+      -d '{ 
+            "name": "Janette Doe", 
+            "email": "janette@retailer.com", 
+            "phone": "+10987654321" 
+          }'
 ```
 
 > `Response: 200 (application/json)`:
@@ -1138,18 +1150,18 @@ offset | *number* | **optional** value to offset results by
 
 # Task Estimates
 
-Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available Time Windows, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned Time Window objects to turn the estimate into a task.
+Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available `Time Window`s, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned `Time Window` objects to turn the estimate into a task.
 
 A `Time Window` is an object specifying a window that a task can be competed in. It has the following properties:
 
 Name | Type | Info
 :--- | :--- | :---
-id | *string* | A unique identifier for the time window (required to create a Task)
-start_time | *number* | Unix timestamp for when the time window starts
-end_time | *number* | Unix timestamp for when the time window ends
+id | *string* | A unique identifier for the `Time Window` (required to create a Task)
+start_time | *number* | Unix timestamp for when the `Time Window` starts
+end_time | *number* | Unix timestamp for when the `Time Window` ends
 expires_at | *number* | Unix timestamp for when the window must be reserved by. 
 
-**Note**: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid Time Windows.
+**Note**: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid `Time Window`s.
 
 ## Create an Estimate
 
@@ -1162,7 +1174,7 @@ curl  -X POST  "api.shopturn.com/v1/estimate" \
             "address":{
                 "unparsed": "176 East 3rd st nyc 10009",
                 "apartment": "4c"
-            },
+            }, 
             "customer_id":"2rTLxcOd6Y5G0jdRwOVvKVS",
             "store_id":"d6Y5G0jd2rTLxcORwOVvKVS", // leave out to auto-assign
             "barcodes": ["3647847698354","245736732","3647847698354"]
@@ -1306,8 +1318,551 @@ curl  -X GET  "api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
 }
 ```
 
-Get a Task Estimate with a specific `id`. This re-generates the Time Window objects with later `expires_at` attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. 
+Get a Task Estimate with a specific `id`. This re-generates the `Time Window` objects with later `expires_at` attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. 
 
 ### HTTP Request:
 
 `GET https://api.shopturn.com/v1/estimate/<estimate_id>`
+
+
+# Tasks
+
+Tasks represent units of work, defined by one destination and one recipient, and are automatically assigned to workers for completion. Note that both return pick-ups and deliveries are considered tasks. 
+
+The first step to creating a `Task` is to create a `Task Estimate`. Once created, save the `id` of the estimate, and present the available `Time Window`s to the customer (returned as part of the `Task Estimate` object). When they select a `Time Window`, send the `id` of the `Task Estimate` along with the `id` of the `Time Window` to the `Tasks` endpoint as described in more detail below. 
+
+
+## Create a Task
+
+> Example:
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/task" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d  '{
+                "estimate_id":"FsSgHz2n4pOZ36b6ppEUwGA",
+                "windowId":"Hz2npEUwG4pOZ36b6pFsSgA",
+                "charge_customer":true,
+                "return_store_credit":false,
+                "notes": "I left my bag and receipt with the doorman. Thx!"
+           }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+  "id": "WQSb6pFz4pOEUwZ36pSgsHGA",
+  "charge_customer": true, 
+  "return_store_credit": false,
+  "status": "assigned" // created, assigned, inTransit, arrived, completed, canceled, or aborted
+  "worker": { // null if status is 'created'
+      "id": "sFtimptJJdC2qmptJ",
+      "time_created": 1508438064,
+      "time_last_modified": 1508438064,
+      "time_last_seen": null,
+      "organization": "mDdfg3mNz9agUcNDrTsNOL",
+      "name": "Janette Doe",
+      "phone": "+10987654321",
+      "current_task": null,
+      "tasks": [], // tasks assigned to the driver for the current time block (10-12pm, 12-2pm, ... 8-10pm)
+      "on_duty": false, 
+      "delay_time": 0, // (minutes behind schedule)
+      "metadata": [],
+      "vehicle": {
+          "id": "5F4RR11235JAx3wL8",
+          "type": "CAR",
+          "description": "Toyota Camry",
+          "license_plate": "FYC-7992",
+          "color": "#0000",
+          "year": 2014
+      },
+  },
+  "customer_id": "0jdRw*OVvKVS2rTLxcOd6Y5G",
+  "store": {
+    "id": "SgHz*2n4pOZ36b6pFspEUwGA",
+    "name": "NY Lower East Side",
+    "location": [
+      -102.400942,
+      47.018286
+    ],
+    "address": {
+      "number": "176",
+      "street": "E 3rd St",
+      "city": "New York",
+      "state": "NY",
+      "country": "United States",
+      "postal_code": "10009"
+    }
+  },
+  "time_window": {
+      "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+      "start_time": 1508535337,
+      "end_time": 1508595337,
+  },
+  "completed_at": null, // null if not completed
+  "notes": "I left my bag and receipt with the doorman. Thx!",
+  "pricing": {
+      "miles": 1.5, 
+      "base": 2.25,
+      "rate": 2.00,
+      "total": 5.25 
+  },
+  "barcodes": ["724272463834", "638372427244"]
+  "time_created": 1509050462,
+  "time_last_modified": 1509310701,
+}
+```
+
+Create a new `Task` from a `Task Estimate` and a `Time Window`.
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/task`
+
+### Body Parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+estimate_id | String | The id of the task estimate you are converting to a task
+time_window_id | String | The id of the desired `Time Window` to schedule the task for
+charge_customer | Boolean | Set to `true` to charge the customer for the task
+return_store_credit | Boolean | Set to `true` to return store credit to the consumer (only effects returns)
+notes | String | **optional** Entry or completion instructions from the customer to the worker
+
+## Get a Task
+
+> Example:
+
+```shell
+curl  -X GET  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+{
+  "id": "WQSb6pFz4pOEUwZ36pSgsHGA",
+  "charge_customer": true, 
+  "return_store_credit": false,
+  "status": "assigned" // created, assigned, inTransit, arrived, completed, canceled, or aborted
+  "worker": { // null if status is 'created'
+      "id": "sFtimptJJdC2qmptJ",
+      "time_created": 1508438064,
+      "time_last_modified": 1508438064,
+      "time_last_seen": null,
+      "organization": "mDdfg3mNz9agUcNDrTsNOL",
+      "name": "Janette Doe",
+      "phone": "+10987654321",
+      "current_task": null,
+      "tasks": [], // tasks assigned to the driver for the current time block (10-12pm, 12-2pm, ... 8-10pm)
+      "on_duty": false, 
+      "delay_time": 0, // (minutes behind schedule)
+      "metadata": [],
+      "vehicle": {
+          "id": "5F4RR11235JAx3wL8",
+          "type": "CAR",
+          "description": "Toyota Camry",
+          "license_plate": "FYC-7992",
+          "color": "#0000",
+          "year": 2014
+      },
+  },
+  "customer_id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+  "store": {
+    "id": "SgHz2n4pOZ36b6pFspEUwGA",
+    "name": "NY Lower East Side",
+    "location": [
+      -102.400942,
+      47.018286
+    ],
+    "address": {
+      "number": "176",
+      "street": "E 3rd St",
+      "city": "New York",
+      "state": "NY",
+      "country": "United States",
+      "postal_code": "10009"
+    }
+  },
+  "time_window": {
+      "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+      "start_time": 1508535337,
+      "end_time": 1508595337,
+  },
+  "completed_at": null, // null if not completed
+  "notes": "I left my bag and receipt with the doorman. Thx!",
+  "pricing": {
+      "miles": 1.5, 
+      "base": 2.25,
+      "rate": 2.00,
+      "total": 5.25 
+  },
+  "barcodes": ["724272463834", "638372427244"]
+  "time_created": 1509050462,
+  "time_last_modified": 1509050462,
+}
+```
+
+Get a Task with a specific `id`.
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/task/<task_id>`
+
+## Update a Task
+
+> Example:
+
+```shell
+curl  -X PUT  "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{
+            "notes": "It's with my neighbor actually in apartment 4B! Thank you!", 
+            "barcodes": ["724272463834"]
+          }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+  "id": "WQSb6pFz4pOEUwZ36pSgsHGA",
+  "charge_customer": true, 
+  "return_store_credit": false,
+  "status": "assigned" // created, assigned, inTransit, arrived, completed, canceled, or aborted
+  "worker": { // null if status is 'created'
+      "id": "sFtimptJJdC2qmptJ",
+      "time_created": 1508438064,
+      "time_last_modified": 1508438064,
+      "time_last_seen": null,
+      "organization": "mDdfg3mNz9agUcNDrTsNOL",
+      "name": "Janette Doe",
+      "phone": "+10987654321",
+      "current_task": null,
+      "tasks": [], // tasks assigned to the driver for the current time block (10-12pm, 12-2pm, ... 8-10pm)
+      "on_duty": false, 
+      "delay_time": 0, // (minutes behind schedule)
+      "metadata": [],
+      "vehicle": {
+          "id": "5F4RR11235JAx3wL8",
+          "type": "CAR",
+          "description": "Toyota Camry",
+          "license_plate": "FYC-7992",
+          "color": "#0000",
+          "year": 2014
+      },
+  },
+  "customer_id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+  "customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G",
+  "store": {
+    "id": "SgHz2n4pOZ36b6pFspEUwGA",
+    "name": "NY Lower East Side",
+    "location": [
+      -102.400942,
+      47.018286
+    ],
+    "address": {
+      "number": "176",
+      "street": "E 3rd St",
+      "city": "New York",
+      "state": "NY",
+      "country": "United States",
+      "postal_code": "10009"
+    }
+  },
+  "time_window": {
+      "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+      "start_time": 1508535337,
+      "end_time": 1508595337,
+  },
+  "completed_at": null, // null if not completed
+  "notes": "I left my bag and receipt with the doorman. Thx!",
+  "pricing": {
+      "miles": 1.5, 
+      "base": 2.25,
+      "rate": 2.00,
+      "total": 5.25 
+  },
+  "barcodes": ["724272463834"]
+  "time_created": 1509050462,
+  "time_last_modified": 1509050462,
+}
+```
+
+____
+
+### HTTP Request:
+
+`PUT https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA`
+
+### Body parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+charge_customer | Boolean | **optional** Set to `true` to charge the customer for the task
+return_store_credit | Boolean | **optional** Set to `true` to return store credit to the consumer (only effects returns)
+notes | String | **optional** Entry or completion instructions from the customer to the worker
+barcodes | *array* | An array of barcodes (strings) that must be scanned by the worker at pickup, and at transfer. Replaces the existing items. Sending an empty list throws an error. To delete / cancel a task see the delete enpoint.
+time_window_id | String | The id of the desired `Time Window` to schedule the task for
+
+
+**Note**: To change the time_window of a task you need to send the id of an unexpired `Time Window`. To do so, create another `Task Estimate` with the same customer and address, present the times to the consumer, and pass back the time_window_id of the newly selected `Time Window`.  
+
+## Delete a Task
+
+> Example:
+
+```shell
+curl  -X DELETE   "api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `200 (application/json)`:
+
+
+Delete a `Task` to cancel it. There may be a small fee if the time of cancelation is within a few hours of the pickup. 
+
+### HTTP Request:
+
+`DELETE https://api.shopturn.com/v1/task/<task_id>`
+
+## Search for Tasks
+
+> `Example:`
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/tasks/search" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{"customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G"}'
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+[
+  
+{
+  "id": "WQSb6pFz4pOEUwZ36pSgsHGA",
+  "charge_customer": true, 
+  "return_store_credit": false,
+  "status": "assigned" // created, assigned, inTransit, arrived, completed, canceled, or aborted
+  "worker": { // null if status is 'created'
+      "id": "sFtimptJJdC2qmptJ",
+      "time_created": 1508438064,
+      "time_last_modified": 1508438064,
+      "time_last_seen": null,
+      "organization": "mDdfg3mNz9agUcNDrTsNOL",
+      "name": "Janette Doe",
+      "phone": "+10987654321",
+      "current_task": null,
+      "tasks": [], // tasks assigned to the driver for the current time block (10-12pm, 12-2pm, ... 8-10pm)
+      "on_duty": false, 
+      "delay_time": 0, // (minutes behind schedule)
+      "metadata": [],
+      "vehicle": {
+          "id": "5F4RR11235JAx3wL8",
+          "type": "CAR",
+          "description": "Toyota Camry",
+          "license_plate": "FYC-7992",
+          "color": "#0000",
+          "year": 2014
+      },
+  },
+  "customer_id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+  "customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G",
+  "store": {
+    "id": "SgHz2n4pOZ36b6pFspEUwGA",
+    "name": "NY Lower East Side",
+    "location": [
+      -102.400942,
+      47.018286
+    ],
+    "address": {
+      "number": "176",
+      "street": "E 3rd St",
+      "city": "New York",
+      "state": "NY",
+      "country": "United States",
+      "postal_code": "10009"
+    }
+  },
+  "time_window": {
+      "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+      "start_time": 1508535337,
+      "end_time": 1508595337,
+  },
+  "completed_at": null, // null if not completed
+  "notes": "I left my bag and receipt with the doorman. Thx!",
+  "pricing": {
+      "miles": 1.5, 
+      "base": 2.25,
+      "rate": 2.00,
+      "total": 5.25 
+  },
+  "barcodes": ["724272463834"]
+  "time_created": 1509050462,
+  "time_last_modified": 1509050462,
+},
+    {...},
+]
+```
+
+Search for upcoming, in progress, completed or canceled tasks matching *all* of any combination of the following search parameters: 
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/task/search`
+
+### Body Parameters: 
+
+Name | Type | Info
+:--- | :--- | :---
+worker_id | *string* | **optional** Matches entities with workers who have this id
+customer_id | *string* | **optional** Matches entities with customer who have this id
+customer_external_id | *string* | **optional** Matches entities with customer who have this external id
+status | *string* | **optional** Matches entities with tasks that have this status
+order_by | *string* | **optional** name (default), email, phone, on_duty, time_created, or time_last_modified
+descending | *boolean* | **optional** true to list workers in descending order. Defaults to `false`
+limit | *number* | **optional** value to limit to results to
+offset | *number* | **optional** value to offset results by
+
+# Webhooks
+
+ShopTurn makes it possible for your applications to be notified exactly when important system events occur thanks to [Webhooks](https://en.wikipedia.org/wiki/Webhook).
+
+You're free to create as many webhooks as you like but keep in mind that a webhook always targets a single trigger and external url. 
+
+We're also more than willing to add any webhooks you request within a few hours so shoot us an email if you need something we don't have yet! 
+
+## Kinds of Webhooks
+
+Trigger Id | Trigger Name | Info | Payload 
+:--- | :--- | :--- | :--- 
+0 | task_en_route | Worker began a task | `Task` 
+1 | task_eta | Every time the worker's eta changes by 1 minute (in either direction) | `Task`
+2 | task_arrived | Worker arrived at task address | `Task`
+3 | task_completed | Worker completed a task | `Task`
+4 | task_failed | Task could not be completed. Reason included in `Task.failed_reason` | `Task`
+5 | task_created | Task was created | `Task`
+6 | task_updated | Task was changed | `Task`
+7 | task_deleted | Task was canceled. Check pricing to see if the customer was charged | `Task`
+8 | task_assigned | Task was assigned to a worker | `Task`
+9 | task_unassigned | Task was unassigned from a worker | `Task`
+10 | task_delayed | Task was delayed | `Task`
+11 | worker_duty | Worker's on-duty status changed | `Worker`
+
+Webhooks can be maintained through the developer dashboard (under development) or via the API. We include the webhook id and name in the payload, so you can overload the same URL to handle all the webhookds. 
+
+The JSON payload we will POST to your url will include the following:
+
+Name | Type | Info 
+:--- | :--- | :--- 
+webhook_id | *integer* | The id of the webhook as listed above
+webhook_name | *string* | The name of the webhook as listed above
+secret | *string* | A secret you can provide to us when you create the webhook for verification purposes
+payload | *object* | The payload of the webhook as listed above 
+time | *integer* | Unix epoch time the event took place
+
+## Failure & Retry
+
+Any request that fails (non-200 status code) will be retried every 15 minutes for up to 24 hrs. You will receive an email after the 10th attempt, and after 24 hrs. If the webhook fails 288 times in a row (3 days) the webhook will be disabled and you will receive an email. 
+
+## Create a Webhook
+
+> Example:
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/webhook" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d  '{
+            "url": "www.your.url/task",
+            "secret": "your_secret",
+            "trigger_name": "task_en_route"
+          }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+    "id": "nIE19LipXcrzH1Pn1",
+    "count": 0,
+    "url": "www.your.url/task",
+    "trigger_name": task_en_route,
+    "trigger_id": 0,
+    "time_created": 1509521194
+    "time_last_modified": 1509521194
+}
+```
+
+Create a webhook.
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/webhooks`
+
+### Body Parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+url | *string* | The URL where we will make a post request when the webhook triggers
+secret | *string* | **optional** Secret we will send with each post request for you verification purposes
+trigger_name | *string* | **optional** Name of the trigger
+trigger_id | *string* | **optional** Id of the trigger
+
+**Note:** You must include either the trigger_name or the trigger_id
+
+## Get all Webhooks
+
+> `Example:`
+
+```shell
+curl  -X GET  "api.shopturn.com/v1/webhooks" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+[
+  
+    {
+      "id": "nIE19LipXcrzH1Pn1",
+      "count": 0,
+      "url": "www.your.url/task",
+      "trigger_name": task_en_route,
+      "trigger_id": 0,
+      "time_created": 1509521194
+      "time_last_modified": 1509521194
+    },
+    {...},
+]
+```
+
+List all webhooks belonging to your organization. 
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/webhooks`
+
+## Delete a Webhook
+
+> Example:
+
+```shell
+curl  -X DELETE   "api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `200 (application/json)`:
+
+
+Delete a webhook.
+
+### HTTP Request:
+
+`DELETE https://api.shopturn.com/v1/webhook/<webhook_id>`
+
+
