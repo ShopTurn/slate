@@ -514,7 +514,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/auth/test"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/auth/test"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -531,7 +531,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -555,7 +555,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/organization"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/organization"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
               "name": "New Name", 
@@ -615,7 +615,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/admin"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{ 
               "name": "Jane Doe", 
@@ -670,7 +670,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/admin/QSa52sfS733faK7Xs"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/admin/QSa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -696,7 +696,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{ 
             "name": "Janette Doe", 
@@ -751,7 +751,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/admin/EBa52sfS733faK7Xs"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -765,7 +765,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/admin/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/admin/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"name":"%zach%"}'</span>
 </code></pre>
@@ -841,7 +841,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/worker"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">' {
                 "name": "Janette Doe",
@@ -961,7 +961,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -997,7 +997,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"vehicle_description":"Tesla Model X"}'</span>
 </code></pre>
@@ -1103,7 +1103,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1117,7 +1117,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/worker/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/worker/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"name":"Janette%"}'</span>
 </code></pre>
@@ -1225,7 +1225,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/store"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
               "name": "NY Lower East Side"
@@ -1366,7 +1366,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1398,7 +1398,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"address":{"unparsed":"4 S circle dr, great neck ny"}, "name": "NY Long Island"}'</span>
 </code></pre>
@@ -1528,7 +1528,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1542,7 +1542,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/store/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/store/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"name":"NY Long Island"}'</span>
 </code></pre>
@@ -1665,7 +1665,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/customer"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
             "name": "John Snow",
@@ -1751,7 +1751,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1780,7 +1780,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"name": "John Targarian", "email": "jtargarian@got.com"}'</span>
 </code></pre>
@@ -1854,7 +1854,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -1868,7 +1868,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/customer/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/customer/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{
             "name":"%snow%"
@@ -1996,7 +1996,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/estimate"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/estimate"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
             "address":{
@@ -2158,7 +2158,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -2218,7 +2218,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/task"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/task"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
                 "estimate_id":"FsSgHz2n4pOZ36b6ppEUwGA",
@@ -2334,7 +2334,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -2409,7 +2409,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X PUT  <span class="s2">"https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{
             "notes": "It'</span>s with my neighbor actually <span class="k">in </span>apartment 4B! Thank you!<span class="s2">", 
@@ -2525,7 +2525,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/task/WQSb6pFz4pOEUwZ36pSgsHGA"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -2539,7 +2539,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/tasks/search"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/tasks/search"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d <span class="s1">'{"customer_external_id": "S2rTLxc0jdRwOVvKVOd6Y5G"}'</span>
 </code></pre>
@@ -2797,7 +2797,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"api.shopturn.com/v1/webhook"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X POST  <span class="s2">"https://api.shopturn.com/v1/webhook"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
       -d  <span class="s1">'{
             "url": "www.your.url/task",
@@ -2856,7 +2856,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request:</code></p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"api.shopturn.com/v1/webhooks"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X GET  <span class="s2">"https://api.shopturn.com/v1/webhooks"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
@@ -2883,7 +2883,7 @@ You must include <code>Authorization: API Key</code> as a header in every reques
 <blockquote>
 <p><code>Example Request</code>:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl  -X DELETE   <span class="s2">"https://api.shopturn.com/v1/webhooks/nIE19LipXcrzH1Pn1"</span> <span class="se">\</span>
       -H  <span class="s2">"Authorization: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
