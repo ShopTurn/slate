@@ -7,9 +7,9 @@ toc_footers:
 search: true
 ---
 
-# Introduction
+# General Info
 
-## General Information
+## Introduction
 
 The ShopTurn API is a RESTful web service for developers to programmatically interact with ShopTurn’s real-time delivery and return logistics platform.
 
@@ -250,11 +250,15 @@ curl  -X GET  "api.shopturn.com/v1/admin/QSa52sfS733faK7Xs" \
     "name": "Zach Doe",
     "is_active": true,
     "metadata": []
-    "phone": "+11234567890",
+    "phone": "+11234567890"
 }
 ```
 
 Get an admin with a specific `id`.
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/admin/<admin_id>`
 
 ## Update an Admin
 
@@ -287,7 +291,7 @@ Update an admin's information.
 
 ### HTTP Request:
 
-`PUT https://api.shopturn.com/v1/admin/admin_id`
+`PUT https://api.shopturn.com/v1/admin/<admin_id>`
 
 ### Body Parameters:
 
@@ -475,11 +479,15 @@ curl  -X GET  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
     "vehicle_color": "#0000",
     "vehicle_year": 2014,
     "latitude": -102.123412,
-    "longitude": 47.512341,
+    "longitude": 47.512341
 }
 ```
 
 Get a worker with a specific `id`.
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/worker/<worker_id>`
 
 ## Update a Worker
 
@@ -514,7 +522,7 @@ curl  -X PUT  "api.shopturn.com/v1/worker/sFtimptJJdC2qmptJ" \
     "vehicle_color": "#0000",
     "vehicle_year": 2014,
     "latitude": null,
-    "longitude": null,
+    "longitude": null
 }
 ```
 
@@ -522,7 +530,7 @@ Update a worker's information. Vehicle and capacity attributes can be nulled. (n
 
 ### HTTP Request:
 
-`PUT https://api.shopturn.com/v1/worker/worker_id`
+`PUT https://api.shopturn.com/v1/worker/<worker_id>`
 
 ### Body Parameters:
 
@@ -558,7 +566,7 @@ Delete a Worker
 
 ### HTTP Request:
 
-`DELETE https://api.shopturn.com/v1/worker/worker_id`
+`DELETE https://api.shopturn.com/v1/worker/<worker_id>`
 
 ## Search for Workers
 
@@ -628,3 +636,678 @@ offset | *number* | **optional** value to offset results by
 
 Latitude and longitude must both be included or both be excluded.
 
+# Stores
+
+A store is a location where deliveries start and returns are completed by workers.
+
+## Create a Store
+
+> Example:
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/store" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d  '{
+              "name": "NY Lower East Side"
+              "entry_notes": "Loop arround to the loading dock."
+              "address": {
+                  "number": "176",
+                  "street": "E 3rd St",
+                  "city": "New York",
+                  "state": "NY",
+                  "country": "United States",
+                  "postal_code": "10009"
+              }
+          }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+  "id": "SgHz2n4pOZ36b6pFspEUwGA",
+  "name": "NY Lower East Side",
+  "location": [
+    -102.400942,
+    47.018286
+  ],
+  "address": {
+    "number": "176",
+    "street": "E 3rd St",
+    "city": "New York",
+    "state": "NY",
+    "country": "United States",
+    "postal_code": "10009"
+  },
+  "time_created": 1509513811,
+  "time_last_updated": 1509513811
+}
+```
+
+Create a new store to start accepting returns and scheduling deliveries.
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/store`
+
+### Body Parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | Name of the store 
+entry_notes | *string* | Notes for getting into the store
+address | *object* | Details below
+phone | *string* | **optional** Phone of the store for workers to call in case of a problem
+latitude | *number* | **optional** The latitude value of the store.
+longitude | *number* | **optional** The longitude value of the store.
+
+If the latitude and longitude are ommited, the API will automatically set the coordinates by reverse geocoding the address. 
+
+An `address` object has the following properties:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** A name for the address (i.e. Empire State Building)
+number | *string* | The street number
+street | *string* | The street name
+apartment | *string* | **optional** Apartment number / address line 2
+city | *string* | The city name
+state | *string* | The state name or 2 letter code
+country | *string* | The country name
+postal_code | *string* | The postal code
+unparsed | *string* | **optional** Unparsed human-readable address on one line. If provided, all other properties except for `name` and `apartment` are ignored.
+
+
+## Get a Store
+
+> Example:
+
+```shell
+curl  -X GET  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+{
+  "id": "SgHz2n4pOZ36b6pFspEUwGA",
+  "name": "NY Lower East Side",
+  "location": [
+    -102.400942,
+    47.018286
+  ],
+  "address": {
+    "number": "176",
+    "street": "E 3rd St",
+    "city": "New York",
+    "state": "NY",
+    "country": "United States",
+    "postal_code": "10009"
+  },
+  "time_created": 1509513811,
+  "time_last_updated": 1509513931
+}
+```
+
+Get a store with a specific `id`.
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/store/<store_id>`
+
+## Update a Store
+
+> Example:
+
+```shell
+curl  -X PUT  "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{"address":{"unparsed":"4 S circle dr, great neck ny"}, "name": "NY Long Island"}'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+  "id": "SgHz2n4pOZ36b6pFspEUwGA",
+  "name": "NY Long Island",
+  "location": [
+    -104.940042,
+    49.021886
+  ],
+  "address": {
+    "number": "4",
+    "street": "South Circle Drive",
+    "city": "Great Neck",
+    "state": "NY",
+    "country": "United States",
+    "postal_code": "11021"
+  },
+  "time_created": 1509513811,
+  "time_last_updated": 1509514531
+}
+```
+
+Update a store's information.
+
+### HTTP Request:
+
+`PUT https://api.shopturn.com/v1/store/<store_id>`
+
+### Body parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** New name of the store 
+entry_notes | *string* | **optional** New notes for getting into the store
+address | *object* | **optional** Details below
+phone | *string* | **optional** Phone of the store for workers to call in case of a problem
+latitude | *number* | **optional** The latitude value of the store
+longitude | *number* | **optional** The longitude value of the store
+
+If the latitude and longitude are ommited, the API will automatically set the coordinates by reverse geocoding the address. 
+
+An `address` object has the following properties:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** A name for the address (i.e. Empire State Building)
+number | *string* | The street number
+street | *string* | The street name
+apartment | *string* | **optional** Apartment number / address line 2
+city | *string* | The city name
+state | *string* | The state name or 2 letter code
+country | *string* | The country name
+postal_code | *string* | The postal code
+unparsed | *string* | **optional** Unparsed human-readable address on one line. If provided, all other properties except for `name` and `apartment` are ignored.
+
+
+## Delete a Store
+
+> Example:
+
+```shell
+curl  -X DELETE   "api.shopturn.com/v1/store/SgHz2n4pOZ36b6pFspEUwGA" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `200 (application/json)`:
+
+
+Delete a store.
+
+### HTTP Request:
+
+`DELETE https://api.shopturn.com/v1/store/<store_id>`
+
+
+## Search for Stores
+
+> `Example:`
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/store/search" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{"name":"NY Long Island"}'
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+[
+  
+    {
+      "id": "SgHz2n4pOZ36b6pFspEUwGA",
+      "name": "NY Long Island",
+      "location": [
+        -104.940042,
+        49.021886
+      ],
+      "address": {
+        "number": "4",
+        "street": "South Circle Drive",
+        "city": "Great Neck",
+        "state": "NY",
+        "country": "United States",
+        "postal_code": "11021"
+      },
+      "time_created": 1509513811,
+      "time_last_updated": 1509514531,
+    },
+    {...},
+]
+```
+
+Search for stores matching *all* of any combination of the following search parameters: 
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/store/search`
+
+### Body Parameters: 
+
+Name | Type | Info
+:--- | :--- | :---
+latitude | *number* | **optional** The latitude value of the search coordinates.
+longitude | *number* | **optional** The longitude value of the search coordinates.
+radius | *number* | **optional** Length in meters of desired radius. Defaults to 1000. Max value is 10000. 
+phone | *string* | **optional** Matches entities with phone numbers containing or equal to this value
+name | *string* | **optional** Matches entities with names containing or equal to this value
+street_number | *string* | **optional** Matches entities with addresses with street numbers equal to this value
+street_name | *string* | **optional** Matches entities with addresses with street names equal to this value
+city | *string* | **optional**  Matches entities with addresses with city names equal to this value
+state | *string* | **optional** Matches entities with addresses with state names equal to this value
+country | *string* | **optional** Matches entities with addresses with country names equal to this value
+postal_code | *string* | **optional** Matches entities with addresses with postal codes equal to this value
+order_by | *string* | **optional** name (default), email, phone, on_duty, delay_time, tasks, time_created, time_last_modified, or time_last_seen
+descending | *boolean* | **optional** true to list workers in descending order. Defaults to `false`
+limit | *number* | **optional** value to limit to results to
+offset | *number* | **optional** value to offset results by
+
+# Customers
+
+A customer is a target for a task. (i.e. the person ordering a delivery or scheduling a return).
+
+## Create a Customer
+
+> Example:
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/customer" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d  '{
+            "name": "John Snow",
+            "external_id": "4SGd53hSF6s27"
+            "phone": "+15163535572",
+            "email": "jsnow@got.com",
+            "notes": "Very stubborn. Sticks to his morals.",
+            "skip_phone_number_verification": true
+          }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+    "id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+    "external_id": "4SGd53hSF6s27"
+    "time_created": 1508438064,
+    "time_last_modified": 1508438064,
+    "name": "John Snow",
+    "phone": "+15163535572",
+    "email": "jsnow@got.com",
+    "notes": "Very stubborn. Sticks to his morals.",
+    "skip_notifications": false,
+    "skip_phone_number_verification": true,
+    "skip_email_verification" : false,
+    "email_verified": true,
+    "phone_verified": null
+}
+```
+
+Create a new customer to start requesting returns and deliveries.
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/customer`
+
+### Body Parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+external_id | *string* | The customer's external ID
+name | *string* | The customer's full name
+phone | *string* | A unique phone number with the recipients country code (in the format +11234567890)
+email | *string* | A unique email belonging to the customer
+notes | *string* | **optional** Global notes for the customer, only visible to the organization. Should not be task specific. (e.g. Has a hot temper. Be nice!)
+skip_notifications | *boolean* | **optional** Whether the customer should not receive mobile notifications relating to a task. If set to `false`, notifications will be sent in the following order pending availability: Push Notifications, SMS, Email. Defaults to `false`
+skip_phone_number_verification | *boolean* | **optional** Whether ShopTurn should not verify the customer's phone number. Defaults to `false`
+skip_email_verification | *boolean* | **optional** Whether ShopTurn should not verify the customer's email address. Defaults to `false`
+
+
+## Get a Customer
+
+> Example:
+
+```shell
+curl  -X GET  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+{
+    "id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+    "external_id": "4SGd53hSF6s27"
+    "time_created": 1508438064,
+    "time_last_modified": 1508438064,
+    "name": "John Snow",
+    "phone": "+15163535572",
+    "email": "jsnow@got.com",
+    "notes": "Very stubborn. Sticks to his morals.",
+    "skip_notifications": false,
+    "skip_phone_number_verification": true,
+    "skip_email_verification" : false,
+    "email_verified": true,
+    "phone_verified": null
+}
+```
+
+Get a Customer with a specific `id`.
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/customer/<customer_id>`
+
+## Update a Customer
+
+> Example:
+
+```shell
+curl  -X PUT  "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{"name": "John Targarian", "email": "jtargarian@got.com"}'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+    "id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+    "external_id": "4SGd53hSF6s27"
+    "time_created": 1508438064,
+    "time_last_modified": 1508438064,
+    "name": "John Targarian",
+    "phone": "+15163535572",
+    "email": "jtargarian@got.com",
+    "notes": "Very stubborn. Sticks to his morals.",
+    "skip_notifications": false,
+    "skip_phone_number_verification": true,
+    "skip_email_verification" : false,
+    "email_verified": true,
+    "phone_verified": null
+}
+```
+
+Update a Customer's information. Changing a customer's `email` or `phone` will cause the values of `email_verified` or `phone_verified` to reset. It will also attempt to verify them again if set. Setting a new `email` and setting `skip_email_verification` to true in the same request will prevent the API from verifying the new email. Same goes for phone. 
+
+
+### HTTP Request:
+
+`PUT https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G`
+
+### Body parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** The customer's new full name
+phone | *string* | **optional** A unique phone number with the recipients country code (in the format +11234567890)
+email | *string* | **optional** A unique email belonging to the customer
+notes | *string* | **optional** Global notes for the customer, only visible to the organization. Should not be task specific. (e.g. Has a hot temper. Be nice!)
+skip_notifications | *boolean* | **optional** Whether the customer should not receive mobile notifications relating to a task. If set to `false`, notifications will be sent in the following order pending availability: Push Notifications, SMS, Email. Defaults to `false`
+skip_phone_number_verification | *boolean* | **optional** Whether ShopTurn should not verify the customer's phone number. Defaults to `false`
+skip_email_verification | *boolean* | **optional** Whether ShopTurn should not verify the customer's email address. Defaults to `false`
+
+## Delete a Customer
+
+> Example:
+
+```shell
+curl  -X DELETE   "api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `200 (application/json)`:
+
+
+Delete a customer.
+
+### HTTP Request:
+
+`DELETE https://api.shopturn.com/v1/customer/0jdRwOVvKVS2rTLxcOd6Y5G`
+
+
+## Search for Customers
+
+> `Example:`
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/customer/search" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d '{
+            "name":"%snow%"
+          }'
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+[
+  
+    {
+        "id": "0jdRwOVvKVS2rTLxcOd6Y5G",
+        "time_created": 1508438064,
+        "time_last_modified": 1508438064,
+        "name": "John Snow",
+        "phone": "+15163535572",
+        "email": "jsnow@got.com",
+        "notes": "Very stubborn. Sticks to his morals.",
+        "skip_notifications": false,
+        "skip_phone_number_verification": true,
+        "skip_email_verification" : false,
+        "email_verified": true,
+        "phone_verified": null, 
+    },
+    {
+        "id": "2rTLxcOd6Y5G0jdRwOVvKVS",
+        "time_created": 1508438064,
+        "time_last_modified": 1508438064,
+        "name": "Ramsey Snow",
+        "phone": "+15165635572",
+        "email": "rsnow@got.com",
+        "notes": "Scary, unpredictable and sporatic. Don't get on his bad side!",
+        "skip_notifications": false,
+        "skip_phone_number_verification": false,
+        "skip_email_verification" : false,
+        "email_verified": true,
+        "phone_verified": true,
+    },
+    {...},
+]
+```
+
+Search for customers matching *all* of any combination of the following search parameters:
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/customers/search`
+
+### Body Parameters: 
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** Matches entities with names containing or equal to this value
+phone | *string* | **optional** Matches entities with phone numbers containing or equal to this value
+email | *string* | **optional** Matches entities with emails containing or equal to this value
+order_by | *string* | **optional** name (default), email, phone, on_duty, time_created, or time_last_modified
+descending | *boolean* | **optional** true to list workers in descending order. Defaults to `false`
+limit | *number* | **optional** value to limit to results to
+offset | *number* | **optional** value to offset results by
+
+# Task Estimates
+
+Task estimates represent the intent to create a task for a worker to complete on behalf of a customer. They also give you available Time Windows, validate address info, and validate metro area servicability. First request a Task Estimate for a given customer and destination, then use one of the returned Time Window objects to turn the estimate into a task.
+
+A `Time Window` is an object specifying a window that a task can be competed in. It has the following properties:
+
+Name | Type | Info
+:--- | :--- | :---
+id | *string* | A unique identifier for the time window (required to create a Task)
+start_time | *number* | Unix timestamp for when the time window starts
+end_time | *number* | Unix timestamp for when the time window ends
+expires_at | *number* | Unix timestamp for when the window must be reserved by. 
+
+**Note**: If you wait untill after the expiration time, a new Task Estimate will have to be created to receive valid Time Windows.
+
+## Create an Estimate
+
+> Example:
+
+```shell
+curl  -X POST  "api.shopturn.com/v1/estimate" \
+      -H  "Authorization: YOUR_API_KEY"
+      -d  '{
+            "address":{
+                "unparsed": "176 East 3rd st nyc 10009",
+                "apartment": "4c"
+            },
+            "customer_id":"2rTLxcOd6Y5G0jdRwOVvKVS",
+            "store_id":"d6Y5G0jd2rTLxcORwOVvKVS", // leave out to auto-assign
+            "barcodes": ["3647847698354","245736732","3647847698354"]
+          }'
+```
+
+> `200 (application/json)`:
+
+```json
+{
+    "id": "FsSgHz2n4pOZ36b6ppEUwGA",
+    "address" : {
+        "number": "176",
+        "street": "E 3rd St.",
+        "apartment": "4C",
+        "city": "New York", 
+        "state": "New York",
+        "country": "United States",
+        "postal_code": "10009"
+
+    },
+    "customer_id": "2rTLxcOd6Y5G0jdRwOVvKVS",
+    "store_id": "d6Y5G0jd2rTLxcORwOVvKVS",
+    "barcodes": ["724272463834", "638372427244"]
+    "time_windows": {
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337,
+        },
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337
+        },
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337
+        },
+    },
+    "pricing": {
+        "miles": 1.5, 
+        "base": 2.25,
+        "rate": 2.00,
+        "total": 5.25 
+    }
+}
+```
+
+Creating a `Task Estimate` is the first step to creating a `Task`. 
+
+### HTTP Request:
+
+`POST https://api.shopturn.com/v1/estimate`
+
+### Body Parameters:
+
+Name | Type | Info
+:--- | :--- | :---
+address | *object* | Details below
+customer_id | *string* | **optional** The id of the customer the worker is going to
+customer_external_id | *string* | **optional** The external unique id of the customer the worker is going to
+store_id | *string* | **optional**  The id of the store the task is going to. leave out to auto-assign 
+is_delivery | *boolean* | **optional** Set to `true` if the task is a delivery. Default is `false`
+barcodes | *array* | An array of barcodes (strings) that must be scanned by the worker at pickup, and at transfer.
+
+Either `customer_id` or `customer_external_id` must be included.
+
+An `address` object has the following properties:
+
+Name | Type | Info
+:--- | :--- | :---
+name | *string* | **optional** A name for the address (i.e. Empire State Building)
+number | *string* | The street number
+street | *string* | The street name
+apartment | *string* | **optional** Apartment number / address line 2
+city | *string* | The city name
+state | *string* | The state name or 2 letter code
+country | *string* | The country name
+postal_code | *string* | The postal code
+unparsed | *string* | **optional** Unparsed human-readable address on one line. If provided, all other properties except for `name` and `apartment` are ignored.
+
+
+## Get a Task Estimate
+
+> Example:
+
+```shell
+curl  -X GET  "api.shopturn.com/v1/estimate/FsSgHz2n4pOZ36b6ppEUwGA" \
+      -H  "Authorization: YOUR_API_KEY"
+```
+
+> `Response: 200 (application/json)`:
+
+```json
+{
+    "id": "FsSgHz2n4pOZ36b6ppEUwGA",
+    "address" : {
+        "number": "176",
+        "street": "E 3rd St.",
+        "apartment": "4C",
+        "city": "New York", 
+        "state": "New York",
+        "country": "United States",
+        "postal_code": "10009"
+
+    },
+    "customer_id": "2rTLxcOd6Y5G0jdRwOVvKVS",
+    "store_id": "d6Y5G0jd2rTLxcORwOVvKVS",
+    "barcodes": ["724272463834", "638372427244"]
+    "time_windows": {
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337,
+        },
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337
+        },
+        {
+            "id": "Hz2npEUwG4pOZ36b6pFsSgA",
+            "start_time": 1508535337,
+            "end_time": 1508595337,
+            "expires_at": 1508525337
+        },
+    },
+    "pricing": {
+        "miles": 1.5, 
+        "base": 2.25,
+        "rate": 2.00,
+        "total": 5.25 
+    }
+}
+```
+
+Get a Task Estimate with a specific `id`. This re-generates the Time Window objects with later `expires_at` attributes, so use this if any of them expire before the user selects a time slot. They usually expire within 60 seconds depending on demand. 
+
+### HTTP Request:
+
+`GET https://api.shopturn.com/v1/estimate/<estimate_id>`
