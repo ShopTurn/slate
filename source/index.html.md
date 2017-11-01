@@ -626,10 +626,6 @@ Search for workers matching *all* of any combination of the following search par
 
 `POST https://api.shopturn.com/v1/worker/search`
 
-### Body Parameters: 
-
-Search for workers matching *all* of any combination of the following search parameters:
-
 ### URL parameters: 
 
 Name | Type | Info
