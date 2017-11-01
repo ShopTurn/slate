@@ -1736,7 +1736,7 @@ You're free to create as many webhooks as you like but keep in mind that a webho
 
 We're also more than willing to add any webhooks you request within a few hours so shoot us an email if you need something we don't have yet! 
 
-## Kinds of Webhooks
+## Types of Webhooks
 
 Trigger Id | Trigger Name | Info | Payload 
 :--- | :--- | :--- | :--- 
